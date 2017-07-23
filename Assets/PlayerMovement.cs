@@ -12,8 +12,11 @@ public class PlayerMovement : MonoBehaviour {
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
 
 
+
+
     // Use this for initialization
     void Start () {
+
 
         playerRigidbody = GetComponent<Rigidbody>();
 
@@ -54,7 +57,7 @@ public class PlayerMovement : MonoBehaviour {
     {
 
 
-            Vector3 turnDir = new Vector3(Input.GetAxisRaw("Mouse X") , 0f , Input.GetAxisRaw("Mouse Y"));
+        Vector3 turnDir = new Vector3(Input.GetAxisRaw("Mouse X") , 0f , Input.GetAxisRaw("Mouse Y"));
  //       Vector3 turnDir = new Vector3(CrossPlatformInputManager.GetAxisRaw("Mouse X"), 0f, CrossPlatformInputManager.GetAxisRaw("Mouse Y"));
 
         if (turnDir != Vector3.zero)
