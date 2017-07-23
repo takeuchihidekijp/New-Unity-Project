@@ -54,9 +54,10 @@ public class PlayerMovement : MonoBehaviour {
     {
 
 
-            Vector3 turnDir = new Vector3(CrossPlatformInputManager.GetAxisRaw("Mouse X") , 0f , CrossPlatformInputManager.GetAxisRaw("Mouse Y"));
+            Vector3 turnDir = new Vector3(Input.GetAxisRaw("Mouse X") , 0f , Input.GetAxisRaw("Mouse Y"));
+ //       Vector3 turnDir = new Vector3(CrossPlatformInputManager.GetAxisRaw("Mouse X"), 0f, CrossPlatformInputManager.GetAxisRaw("Mouse Y"));
 
-            if (turnDir != Vector3.zero)
+        if (turnDir != Vector3.zero)
             {
                 // Create a vector from the player to the point on the floor the raycast from the mouse hit.
                 Vector3 playerToMouse = (transform.position + turnDir) - transform.position;
