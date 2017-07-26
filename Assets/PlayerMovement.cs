@@ -17,26 +17,34 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-
         playerRigidbody = GetComponent<Rigidbody>();
 
     }
 
+	Vector3 beginPos;
+
     // Update is called once per frame
     void Update () {
 
-        // Store the input axes.
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+		if( Input.GetMouseButtonDown(0) ) {
+			beginPos = Input.mousePosition;
+		}
+		else if ( Input.GetMouseButton(0) ) {
 
-        //        float h = CrossPlatformInputManager.GetAxisRaw("Horizontal");
-        //        float v = CrossPlatformInputManager.GetAxisRaw("Vertical");
+			Vector3 diff = Input.mousePosition - beginPos;
 
-        // Move the player around the scene.
-        Move(h, v);
+			diff *= speed;
 
-        // Turn the player to face the mouse cursor.
-        Turning();
+			Move( diff.x, diff.y );
+
+			Vector3 dir = diff.normalized;
+
+			float rag = Mathf.Atan2( dir.x, dir.y );
+			float deg = rag * Mathf.Rad2Deg;
+
+			playerRigidbody.MoveRotation(Quaternion.Euler(0,deg,0));
+		}
+
 
 
     }
@@ -53,26 +61,4 @@ public class PlayerMovement : MonoBehaviour {
         playerRigidbody.MovePosition(transform.position + movement);
     }
 
-    void Turning()
-    {
-
-
-        Vector3 turnDir = new Vector3(Input.GetAxisRaw("Mouse X") , 0f , Input.GetAxisRaw("Mouse Y"));
- //       Vector3 turnDir = new Vector3(CrossPlatformInputManager.GetAxisRaw("Mouse X"), 0f, CrossPlatformInputManager.GetAxisRaw("Mouse Y"));
-
-        if (turnDir != Vector3.zero)
-            {
-                // Create a vector from the player to the point on the floor the raycast from the mouse hit.
-                Vector3 playerToMouse = (transform.position + turnDir) - transform.position;
-
-                // Ensure the vector is entirely along the floor plane.
-                playerToMouse.y = 0f;
-
-                // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
-                Quaternion newRotatation = Quaternion.LookRotation(playerToMouse);
-
-                // Set the player's rotation to this new rotation.
-                playerRigidbody.MoveRotation(newRotatation);
-            }
-    }
 }
