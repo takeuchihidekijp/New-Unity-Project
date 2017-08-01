@@ -10,4 +10,7 @@ public class GameData {
 
     // start updateも取る。MonoBehaviourの機能なので
 
+    //敵の数の上限
+    public static int NUMBER_OF_ENEMYS = 5;
+
 }
