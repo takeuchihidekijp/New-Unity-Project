@@ -18,6 +18,7 @@ public class EnemyContoroller : MonoBehaviour {
     void Start () {
 
         this.Player = GameObject.Find("Player");
+        enemyRigidbody = GetComponent<Rigidbody>();
 
     }
 	
