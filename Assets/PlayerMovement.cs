@@ -12,6 +12,13 @@ public class PlayerMovement : MonoBehaviour {
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
 
 
+    // ゴール
+    [SerializeField] Transform target;
+
+    // カーソル
+    [SerializeField] Transform cursor;
+
+
 
 
     // Use this for initialization
@@ -44,6 +51,8 @@ public class PlayerMovement : MonoBehaviour {
 
 			playerRigidbody.MoveRotation(Quaternion.Euler(0,deg,0));
 		}
+
+        cursor.LookAt(target);
 
 
 
