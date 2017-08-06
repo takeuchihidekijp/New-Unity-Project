@@ -31,7 +31,7 @@ public class EnemyContoroller : MonoBehaviour {
 
         nav.SetDestination(Player.transform.position);
 
-        Vector3 diff = Player.transform.position - this.transform.position;
+      //  Vector3 diff = Player.transform.position - this.transform.position;
 
         //    diff *= speed;
 
