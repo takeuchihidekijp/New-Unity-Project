@@ -6,8 +6,12 @@ public class Player : MonoBehaviour {
 
 	private List<GameObject> fellows = new List<GameObject>();
 
-	//Prefabを入れる
-	public GameObject FellowPrefab;
+    // プレイヤーの座標ログを初期化
+    private List<Vector3> PlayerPositionLog = new List<Vector3>();
+
+
+    //Prefabを入れる
+    public GameObject FellowPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -16,11 +20,14 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		foreach (var fellow in fellows) {
-		//	fellow.transform.position = test; //←味方の位置を調整
-		}
-		
-	}
+        for (int i = 0; i < fellows.Count; ++i)
+        {
+            var fellow = fellows[i]; // 配列をインデックスでアクセス
+
+            fellow.transform.position = PlayerPositionLog[i]; 
+        }
+
+    }
 
 
 	// 味方のオブジェクトを追加
