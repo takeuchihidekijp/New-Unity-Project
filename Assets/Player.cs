@@ -18,6 +18,14 @@ public class Player : MonoBehaviour {
 
         PlayerPositionLog.Add(this.transform.position);
 
+        for (int i = 1; i < 100; ++i)
+        {
+            Vector3 p = this.transform.position;
+            p.z -= (float)i * 0.5f;
+            PlayerPositionLog.Insert(0, p);
+
+        }
+
     }
 	
 	// Update is called once per frame
