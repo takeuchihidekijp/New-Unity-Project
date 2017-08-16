@@ -52,6 +52,11 @@ public class Player : MonoBehaviour {
 
         }
 
+        if (PlayerPositionLog.Count > 1000)
+        {
+            PlayerPositionLog.RemoveAt(0);
+        }
+
     }
 
 
