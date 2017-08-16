@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
 
         PlayerPositionLog.Add(this.transform.position);
 
+        // Playerの位置を最初に設定しておくことで最初や２番目に捕まえた敵の位置が固定で動かなくなる事象を回避
         for (int i = 1; i < 100; ++i)
         {
             Vector3 p = this.transform.position;
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour {
 
             int index = lastIndex - (i + 1) * 100;
 
+            // インデックスが０未満の場合は捕まえた敵の位置をPlayerと合わせることはしない
             if (index >= 0)
             {
                 fellow.transform.position = PlayerPositionLog[index];
@@ -59,6 +61,8 @@ public class Player : MonoBehaviour {
 
 
         }
+
+        // ログの定期的な削除。１０００を超えたらその時点の０番目の値を削除する。あくまでその時点の０番目
 
         if (PlayerPositionLog.Count > 1000)
         {
