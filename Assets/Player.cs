@@ -34,14 +34,19 @@ public class Player : MonoBehaviour {
         {
             PlayerPositionLog.Add(this.transform.position);
         }
-        
+
 
 
         for (int i = 0; i < fellows.Count; ++i)
         {
             var fellow = fellows[i]; // 配列をインデックスでアクセス
-       
-            fellow.transform.position = PlayerPositionLog[lastIndex - i];
+
+            int index = lastIndex - (i + 1) * 100;
+
+            if (index >= 0)
+            {
+                fellow.transform.position = PlayerPositionLog[index];
+            }
 
 
 
