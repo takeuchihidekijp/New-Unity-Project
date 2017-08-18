@@ -43,7 +43,7 @@ public class EnemyContoroller : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject.tag == "Player")
         {
 
             // Playerクラスの参照を取得して味方の数を増やす
