@@ -47,7 +47,7 @@ public class EnemyContoroller : MonoBehaviour {
         {
 
             // Playerクラスの参照を取得して味方の数を増やす
-            Player player = collision.gameObject.GetComponent<Player>();
+            Player player = this.Player.gameObject.GetComponent<Player>();
             player.AddFellow();
 
             Destroy(this.gameObject);
