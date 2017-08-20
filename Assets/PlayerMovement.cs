@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float speed = 60f;            // The speed that the player will move at.
+    public float speed = 6f;            // The speed that the player will move at.
 
 
     Vector3 movement;                   // The vector to store the direction of the player's movement.
