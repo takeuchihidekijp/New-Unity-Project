@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -13,8 +14,19 @@ public class Player : MonoBehaviour {
     //Prefabを入れる
     public GameObject FellowPrefab;
 
-	// Use this for initialization
-	void Start () {
+    //ゲーム終了時に表示するテキスト
+    private GameObject stateText;
+    //スコアを表示するテキスト（追加）
+    private GameObject scoreText;
+
+    //得点
+    private int score = 0;
+
+    //ゲーム終了の判定
+    private bool isEnd = false;
+
+    // Use this for initialization
+    void Start () {
 
         PlayerPositionLog.Add(this.transform.position);
 
@@ -27,10 +39,24 @@ public class Player : MonoBehaviour {
 
         }
 
+        //シーン中のstateTextオブジェクトを取得
+        this.stateText = GameObject.Find("GameResultText");
+
+        //シーン中のscoreTextオブジェクトを取得
+        this.scoreText = GameObject.Find("ScoreText");
+
+
+
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        //ゲーム終了なら
+        if (this.isEnd)
+        {
+
+        }
 
         // 最新の座標のインデックス
         int lastIndex = PlayerPositionLog.Count - 1;
@@ -72,10 +98,33 @@ public class Player : MonoBehaviour {
     }
 
 
-	// 味方のオブジェクトを追加
+	// 味方のオブジェクトを追加とスコアも追加
 	public void AddFellow(){
 		var ins = Instantiate (FellowPrefab);
 
 		fellows.Add (ins);
-	}
+
+        // スコアを加算
+        this.score += 10;
+
+        //ScoreText獲得した点数を表示
+        this.scoreText.GetComponent<Text>().text = "Score " + this.score + "pt";
+    }
+
+    // Playerが他のオブジェクトと接触した場合の処理
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        //障害物に衝突した場合(未実装　車などを想定)
+
+        //ゴール地点に到達した場合
+        if (collision.gameObject.tag == "Goal")
+        {
+            this.isEnd = true;
+            //stateTextにGAME CLEARを表示（追加）
+            this.stateText.GetComponent<Text>().text = "CLEAR!!";
+        }
+
+
+    }
 }
