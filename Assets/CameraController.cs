@@ -39,6 +39,6 @@ public class CameraController : MonoBehaviour {
         //バウンディングボックスの位置に合わせてカメラの位置を移動
         //Lerpの値は調整中
         Vector3 target = new Vector3(cameraPos.x - difference_x, cameraPos.y - difference_y, cameraPos.z - difference_z);
-        this.transform.position = Vector3.Lerp(this.transform.position, target, 0.5f);
+        this.transform.position = Vector3.Lerp(this.transform.position, target, 1.5f);
     }
 }
