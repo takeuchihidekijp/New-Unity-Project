@@ -105,17 +105,17 @@ public class Player : MonoBehaviour {
             {
                 min.x = fellow.transform.position.x;
             }
-            if (min.y > fellow.transform.position.y)
+            if (min.z > fellow.transform.position.z)
             {
-                min.y = fellow.transform.position.y;
+                min.z = fellow.transform.position.z;
             }
             if (max.x < fellow.transform.position.x)
             {
                 max.x = fellow.transform.position.x;
             }
-            if (max.y < fellow.transform.position.y)
+            if (max.z < fellow.transform.position.z)
             {
-                max.y = fellow.transform.position.y;
+                max.z = fellow.transform.position.z;
             }
         }
 
