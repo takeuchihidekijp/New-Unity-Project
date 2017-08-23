@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
     //ゲーム終了の判定
     private bool isEnd = false;
 
+    private Vector3 cameraFocusPoint;
+
     // Use this for initialization
     void Start () {
 
@@ -86,7 +88,38 @@ public class Player : MonoBehaviour {
 
 
 
+
+
         }
+
+        // 味方のバウンディングボックスからカメラの注視点を求める
+        Vector3 min = this.transform.position;
+        Vector3 max = this.transform.position;
+
+        for (int i = 0; i < fellows.Count; ++i)
+        {
+
+            var fellow = fellows[i];
+
+            if (min.x > fellow.transform.position.x)
+            {
+                min.x = fellow.transform.position.x;
+            }
+            if (min.y > fellow.transform.position.y)
+            {
+                min.y = fellow.transform.position.y;
+            }
+            if (max.x < fellow.transform.position.x)
+            {
+                max.x = fellow.transform.position.x;
+            }
+            if (max.y < fellow.transform.position.y)
+            {
+                max.y = fellow.transform.position.y;
+            }
+        }
+
+        cameraFocusPoint = (min + max) / 2;
 
         // ログの定期的な削除。１０００を超えたらその時点の０番目の値を削除する。あくまでその時点の０番目
 
@@ -97,9 +130,14 @@ public class Player : MonoBehaviour {
 
     }
 
+    public Vector3 GetCameraPos()
+    {
+        return cameraFocusPoint;
+    }
 
-	// 味方のオブジェクトを追加とスコアも追加
-	public void AddFellow(){
+
+    // 味方のオブジェクトを追加とスコアも追加
+    public void AddFellow(){
 		var ins = Instantiate (FellowPrefab);
 
 		fellows.Add (ins);

@@ -33,7 +33,10 @@ public class CameraController : MonoBehaviour {
 	void LateUpdate() {
 
         //Playerの位置に合わせてカメラの位置を移動
-        this.transform.position = new Vector3(this.Player.transform.position.x - difference_x, this.Player.transform.position.y - difference_y, this.Player.transform.position.z - difference_z);
+        Player playerClass = this.Player.GetComponent<Player>();
+        Vector3 cameraPos = playerClass.GetCameraPos();
 
+        //Playerの位置に合わせてカメラの位置を移動
+        this.transform.position = new Vector3(cameraPos.x - difference_x, cameraPos.y - difference_y, cameraPos.z - difference_z);
     }
 }
