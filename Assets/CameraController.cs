@@ -36,9 +36,11 @@ public class CameraController : MonoBehaviour {
         Player playerClass = this.Player.GetComponent<Player>();
         Vector3 cameraPos = playerClass.GetCameraPos();
 
+        float dist = playerClass.score * 0.2f;
+
         //バウンディングボックスの位置に合わせてカメラの位置を移動(cameraPos.y + playerClass.scoreとすることで敵を捕まえたらカメラの位置を上に移動)
         //Lerpの値は調整中
-        Vector3 target = new Vector3(cameraPos.x - difference_x, cameraPos.y + playerClass.score - difference_y, cameraPos.z - playerClass.score - difference_z);
+        Vector3 target = new Vector3(cameraPos.x - difference_x, cameraPos.y + dist - difference_y, cameraPos.z - dist - difference_z);
         this.transform.position = Vector3.Lerp(this.transform.position, target, 1.5f * Time.deltaTime);
     }
 }

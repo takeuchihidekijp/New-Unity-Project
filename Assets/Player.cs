@@ -31,6 +31,8 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        Application.targetFrameRate = 30;
+
         PlayerPositionLog.Add(this.transform.position);
 
         // Playerの位置を最初に設定しておくことで最初や２番目に捕まえた敵の位置が固定で動かなくなる事象を回避
