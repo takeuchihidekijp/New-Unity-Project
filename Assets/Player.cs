@@ -19,12 +19,13 @@ public class Player : MonoBehaviour {
     //スコアを表示するテキスト（追加）
     private GameObject scoreText;
 
-    //得点
-    private int score = 0;
+    //得点(cameraに使うためPublicに変更)
+    public int score = 0;
 
     //ゲーム終了の判定
     private bool isEnd = false;
 
+    //バウンディングボックス設定用
     private Vector3 cameraFocusPoint;
 
     // Use this for initialization
@@ -107,7 +108,7 @@ public class Player : MonoBehaviour {
             }
             if (min.z > fellow.transform.position.z)
             {
-				min.z = fellow.transform.position.z;
+                min.z = fellow.transform.position.z;
             }
             if (max.x < fellow.transform.position.x)
             {
