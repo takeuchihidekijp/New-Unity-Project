@@ -78,8 +78,8 @@ public class Player : MonoBehaviour {
         for (int i = 0; i < fellows.Count; ++i)
         {
             var fellow = fellows[i]; // 配列をインデックスでアクセス
-
-            int index = lastIndex - (i + 1) * 100;
+            //100は、仮。過去の履歴の１００番目ということになる。
+            int index = lastIndex - (i + 1) * 10;
 
             // インデックスが０未満の場合は捕まえた敵の位置をPlayerと合わせることはしない
             if (index >= 0)
