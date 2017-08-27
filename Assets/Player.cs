@@ -122,6 +122,9 @@ public class Player : MonoBehaviour {
 
         cameraFocusPoint = (min + max) / 2;
 
+        // 注視点とプレイヤーの間を取る
+        cameraFocusPoint = (cameraFocusPoint + this.transform.position) / 2;
+
         // ログの定期的な削除。１０００を超えたらその時点の０番目の値を削除する。あくまでその時点の０番目
 
         if (PlayerPositionLog.Count > 1000)
