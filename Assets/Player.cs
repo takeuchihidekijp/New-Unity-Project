@@ -30,7 +30,8 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        //FrameRateがandroidとiPhoneで異なることがあるのでここで合わせておく
+        //FrameRateがandroid 60のことが多い。端末の問題。iPhoneは３０のことが多い。60 はオーバースペック
         Application.targetFrameRate = 30;
 
         PlayerPositionLog.Add(this.transform.position);
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour {
         for (int i = 0; i < fellows.Count; ++i)
         {
             var fellow = fellows[i]; // 配列をインデックスでアクセス
-            //100は、仮。過去の履歴の１００番目ということになる。
+            //100は、仮。過去の履歴の１００番目ということになる。なので10にしておく。10にするとスネークゲームっぽくなる。
             int index = lastIndex - (i + 1) * 10;
 
             // インデックスが０未満の場合は捕まえた敵の位置をPlayerと合わせることはしない
@@ -160,12 +161,18 @@ public class Player : MonoBehaviour {
     {
 
         //障害物に衝突した場合(未実装　車などを想定)
+        if (collision.gameObject.tag == "Car")
+        {
+            this.isEnd = true;
+            //stateTextにGAME OVERを表示
+            this.stateText.GetComponent<Text>().text = "GAME OVER";
+        }
 
         //ゴール地点に到達した場合
         if (collision.gameObject.tag == "Goal")
         {
             this.isEnd = true;
-            //stateTextにGAME CLEARを表示（追加）
+            //stateTextにGAME CLEARを表示
             this.stateText.GetComponent<Text>().text = "CLEAR!!";
         }
 
