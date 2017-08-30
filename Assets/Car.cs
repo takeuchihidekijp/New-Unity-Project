@@ -24,5 +24,11 @@ public class Car : MonoBehaviour {
         //carに前方向の力を加える（追加）
         this.myRigidbody.AddForce(this.transform.forward * this.forwardForce);
 
+
+        if(this.transform.position.z < -140)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 }
