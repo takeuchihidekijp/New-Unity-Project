@@ -21,8 +21,14 @@ public class Fellow : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+
+        //シーン中のstateTextオブジェクトを取得
+        this.stateText = GameObject.Find("GameResultText");
+
+        //シーン中のscoreTextオブジェクトを取得
+        this.scoreText = GameObject.Find("ScoreText");
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
