@@ -15,11 +15,15 @@ public class EnemyContoroller : MonoBehaviour {
     //Playerのオブジェクト
     private GameObject Player;
 
+    //Storeのオブジェクト
+    private GameObject Store;
 
     // Use this for initialization
     void Start() {
 
         this.Player = GameObject.Find("Player");
+        this.Store = GameObject.Find("Store");
+
         enemyRigidbody = GetComponent<Rigidbody>();
 
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -29,9 +33,57 @@ public class EnemyContoroller : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        nav.SetDestination(Player.transform.position);
+        Vector3 diff = Player.transform.position - this.transform.position;
 
-      //  Vector3 diff = Player.transform.position - this.transform.position;
+        diff *= speed;
+
+        if(diff.z > 20)
+        {
+            nav.SetDestination(Store.transform.position);
+        }
+
+        if (Mathf.Abs(diff.x) < Mathf.Abs(diff.z))
+        {
+            if(diff.z > 0)
+            {
+                // 下に逃げる
+                enemyRigidbody.MovePosition(this.transform.position + new Vector3(0, 0, -1));
+                enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
+
+            }
+            else
+            {
+                // 上に逃げる
+                enemyRigidbody.MovePosition(this.transform.position + new Vector3(0, 0, 1));
+                enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
+
+                if (this.transform.position.z > 130)
+                {
+                    nav.SetDestination(Store.transform.position);
+                }
+            }
+        }
+        else
+        {
+            // X軸の距離がZ軸の距離より大きい
+            if (diff.x > 0){
+                // 左に逃げる
+                enemyRigidbody.MovePosition(this.transform.position + new Vector3(-1, 0, 0));
+                enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
+
+            }
+            else
+            {
+                // 右に逃げる
+                enemyRigidbody.MovePosition(this.transform.position + new Vector3(1, 0, 0));
+                enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
+
+            }
+        }
+
+        // nav.SetDestination(Player.transform.position);
+
+        //  Vector3 diff = Player.transform.position - this.transform.position;
 
         //    diff *= speed;
 
