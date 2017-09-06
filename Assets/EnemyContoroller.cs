@@ -31,20 +31,17 @@ public class EnemyContoroller : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
         Vector3 diff = Player.transform.position - this.transform.position;
 
         diff *= speed;
 
-        if(diff.z > 20)
-        {
-            nav.SetDestination(Store.transform.position);
-        }
 
         if (Mathf.Abs(diff.x) < Mathf.Abs(diff.z))
         {
-            if(diff.z > 0)
+            if (diff.z > 0)
             {
                 // 下に逃げる
                 enemyRigidbody.MovePosition(this.transform.position + new Vector3(0, 0, -1));
@@ -66,7 +63,8 @@ public class EnemyContoroller : MonoBehaviour {
         else
         {
             // X軸の距離がZ軸の距離より大きい
-            if (diff.x > 0){
+            if (diff.x > 0)
+            {
                 // 左に逃げる
                 enemyRigidbody.MovePosition(this.transform.position + new Vector3(-1, 0, 0));
                 enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
@@ -81,15 +79,18 @@ public class EnemyContoroller : MonoBehaviour {
             }
         }
 
+        Vector3 diff_after = Player.transform.position - this.transform.position;
+
+        if (diff_after.z > 20)
+        {
+            nav.SetDestination(Store.transform.position);
+        }
+
         // nav.SetDestination(Player.transform.position);
 
         //  Vector3 diff = Player.transform.position - this.transform.position;
 
         //    diff *= speed;
-
-
-
-
 
     }
 
