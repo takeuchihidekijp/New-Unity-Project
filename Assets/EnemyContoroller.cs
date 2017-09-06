@@ -36,53 +36,14 @@ public class EnemyContoroller : MonoBehaviour {
 
         Vector3 diff = Player.transform.position - this.transform.position;
 
-        diff *= speed;
-
-
-        if (Mathf.Abs(diff.x) < Mathf.Abs(diff.z))
+        if(diff.magnitude > 100)
         {
-            if (diff.z > 0)
-            {
-                // 下に逃げる
-                enemyRigidbody.MovePosition(this.transform.position + new Vector3(0, 0, -1));
-                enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
-
-            }
-            else
-            {
-                // 上に逃げる
-                enemyRigidbody.MovePosition(this.transform.position + new Vector3(0, 0, 1));
-                enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
-
-                if (this.transform.position.z > 130)
-                {
-                    nav.SetDestination(Store.transform.position);
-                }
-            }
+            // プレイヤーからの直線距離が 20 以上のときPlayerに向かって移動
+            nav.SetDestination(Player.transform.position);
         }
         else
         {
-            // X軸の距離がZ軸の距離より大きい
-            if (diff.x > 0)
-            {
-                // 左に逃げる
-                enemyRigidbody.MovePosition(this.transform.position + new Vector3(-1, 0, 0));
-                enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
-
-            }
-            else
-            {
-                // 右に逃げる
-                enemyRigidbody.MovePosition(this.transform.position + new Vector3(1, 0, 0));
-                enemyRigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
-
-            }
-        }
-
-        Vector3 diff_after = Player.transform.position - this.transform.position;
-
-        if (diff_after.z > 20)
-        {
+            // プレイヤーからの直線距離が 20 未満のときStoreに向かって移動(逃げるということ)
             nav.SetDestination(Store.transform.position);
         }
 
