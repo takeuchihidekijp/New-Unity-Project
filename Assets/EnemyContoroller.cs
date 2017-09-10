@@ -60,12 +60,12 @@ public class EnemyContoroller : MonoBehaviour {
         {
 
             enemyMoveTime -= Time.deltaTime;
-
+            
             if (enemyMoveTime < 0.0f)
             {
-                EnemyMoveMent();
+               EnemyMoveMent();
 
-                enemyMoveTime = 1.0f;
+               enemyMoveTime = 1.0f;
             }
 
 
