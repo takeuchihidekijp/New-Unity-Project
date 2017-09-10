@@ -28,23 +28,37 @@ public class GameManager : MonoBehaviour {
     //アイテムを出すx方向の幅
     private float posRange = 10;
 
+    //敵の出現数
+    private int enemysNumber = 0;
+
     // Use this for initialization
     void Start () {
 
         //一定の距離ごとにアイテムを生成
         for(int i = startPosZ; i < goalPosZ; i += 15)
         {
-            int num = Random.Range(0, 10);
 
-            if(num <= 1)
-            {
-                for(int j =startPosX; j < goalPosX; j += 30)
+
+
+
+                int num = Random.Range(0, 10);
+
+                if(num <= 1)
                 {
-                    GameObject enemy = Instantiate(EnemyPrefab) as GameObject;
-                    enemy.transform.position = new Vector3(j, enemy.transform.position.y, i);
-                }
 
-            }
+                    for (int j =startPosX; j < goalPosX; j += 30)
+                    {
+                        //敵の出現数をGameDataに合わせる（バグあり。設定数が保証されない
+                        if (enemysNumber < GameData.NUMBER_OF_ENEMYS)
+                            {
+                                GameObject enemy = Instantiate(EnemyPrefab) as GameObject;
+                                enemy.transform.position = new Vector3(j, enemy.transform.position.y, i);
+
+                                enemysNumber += 1;
+                            }
+
+                    }
+                }
         }
 
     }

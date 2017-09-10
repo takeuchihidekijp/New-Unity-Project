@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyContoroller : MonoBehaviour {
 
-    public float speed = 6f;            // The speed that the player will move at.
-
 
     Vector3 movement;                   // The vector to store the direction of the Enemy's movement.
     Rigidbody enemyRigidbody;          // Reference to the enemy's rigidbody.
@@ -15,14 +13,30 @@ public class EnemyContoroller : MonoBehaviour {
     //Playerのオブジェクト
     private GameObject Player;
 
-    //Storeのオブジェクト
+    //Storeのオブジェクト(敵の移動ポイントをStoreとする)
     private GameObject Store;
+
+    private GameObject Store2;
+
+    private GameObject Store3;
+
+    //ランダムで選択目的地へ数秒間移動し続けるタイマー
+    float enemyMoveTime = 0.0f;
+
+    //直前まで敵が向かっていた移動ポイント
+    int enemyDestination_Store = 1;
+    int enemyDestination_Store2 = 2;
+    int enemyDestination_Store3 = 3;
 
     // Use this for initialization
     void Start() {
 
         this.Player = GameObject.Find("Player");
+
         this.Store = GameObject.Find("Store");
+        this.Store2 = GameObject.Find("Store2");
+        this.Store3 = GameObject.Find("Store3");
+
 
         enemyRigidbody = GetComponent<Rigidbody>();
 
@@ -34,17 +48,30 @@ public class EnemyContoroller : MonoBehaviour {
     void Update()
     {
 
+        //プレイヤーからの直線距離
         Vector3 diff = Player.transform.position - this.transform.position;
 
-        if(diff.magnitude > 100)
+        //Storeとの直線距離
+        Vector3 diff_Store = Store.transform.position - this.transform.position;
+        //Store2との直線距離
+        Vector3 diff_Store2 = Store2.transform.position - this.transform.position;
+        //Store3との直線距離
+        Vector3 diff_Store3 = Store3.transform.position - this.transform.position;
+
+        if (diff.magnitude > 100)
         {
-            // プレイヤーからの直線距離が 20 以上のときPlayerに向かって移動
+            // プレイヤーからの直線距離が 100 以上のときPlayerに向かって移動
             nav.SetDestination(Player.transform.position);
         }
         else
         {
-            // プレイヤーからの直線距離が 20 未満のときStoreに向かって移動(逃げるということ)
+
+            int num = Random.Range(0, 10);
+
+            // プレイヤーからの直線距離が 100 未満のときStoreに向かって移動(逃げるということ)
             nav.SetDestination(Store.transform.position);
+
+            EnemyMoveMent();
         }
 
         // nav.SetDestination(Player.transform.position);
@@ -67,6 +94,13 @@ public class EnemyContoroller : MonoBehaviour {
             Destroy(this.gameObject);
 
         }
+    }
+
+    private void EnemyMoveMent()
+    {
+        int num = Random.Range(0, 10);
+
+
     }
 
 }
