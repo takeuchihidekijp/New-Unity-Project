@@ -51,13 +51,6 @@ public class EnemyContoroller : MonoBehaviour {
         //プレイヤーからの直線距離
         Vector3 diff = Player.transform.position - this.transform.position;
 
-        //Storeとの直線距離
-        Vector3 diff_Store = Store.transform.position - this.transform.position;
-        //Store2との直線距離
-        Vector3 diff_Store2 = Store2.transform.position - this.transform.position;
-        //Store3との直線距離
-        Vector3 diff_Store3 = Store3.transform.position - this.transform.position;
-
         if (diff.magnitude > 100)
         {
             // プレイヤーからの直線距離が 100 以上のときPlayerに向かって移動
@@ -66,12 +59,16 @@ public class EnemyContoroller : MonoBehaviour {
         else
         {
 
-            int num = Random.Range(0, 10);
+            enemyMoveTime -= Time.deltaTime;
 
-            // プレイヤーからの直線距離が 100 未満のときStoreに向かって移動(逃げるということ)
-            nav.SetDestination(Store.transform.position);
+            if (enemyMoveTime < 0.0f)
+            {
+                EnemyMoveMent();
 
-            EnemyMoveMent();
+                enemyMoveTime = 1.0f;
+            }
+
+
         }
 
         // nav.SetDestination(Player.transform.position);
@@ -98,7 +95,26 @@ public class EnemyContoroller : MonoBehaviour {
 
     private void EnemyMoveMent()
     {
+        //Storeとの直線距離
+        Vector3 diff_Store = Store.transform.position - this.transform.position;
+        //Store2との直線距離
+        Vector3 diff_Store2 = Store2.transform.position - this.transform.position;
+        //Store3との直線距離
+        Vector3 diff_Store3 = Store3.transform.position - this.transform.position;
+
+        Mathf.Max(diff_Store.magnitude, diff_Store2.magnitude, diff_Store3.magnitude);
+
         int num = Random.Range(0, 10);
+
+        if(num <= 5)
+        {
+            // Storeに向かって移動(逃げるということ)
+            nav.SetDestination(Store.transform.position);
+        }
+        else
+        {
+            nav.SetDestination(Store3.transform.position);
+        }
 
 
     }
