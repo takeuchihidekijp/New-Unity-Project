@@ -13,30 +13,27 @@ public class EnemyContoroller : MonoBehaviour {
     //Playerのオブジェクト
     private GameObject Player;
 
-    //Storeのオブジェクト(敵の移動ポイントをStoreとする)
-    private GameObject Store;
-
-    private GameObject Store2;
-
-    private GameObject Store3;
+    //Storeのオブジェクト用List(敵の移動ポイントをStoreとする)
+    private int StoreCount = 10;
+    private List<GameObject> storeList = new List<GameObject>();
 
     //ランダムで選択目的地へ数秒間移動し続けるタイマー
     float enemyMoveTime = 0.0f;
-
-    //直前まで敵が向かっていた移動ポイント
-    int enemyDestination_Store = 1;
-    int enemyDestination_Store2 = 2;
-    int enemyDestination_Store3 = 3;
 
     // Use this for initialization
     void Start() {
 
         this.Player = GameObject.Find("Player");
 
-        this.Store = GameObject.Find("Store");
-        this.Store2 = GameObject.Find("Store2");
-        this.Store3 = GameObject.Find("Store3");
+        for (int i= 1; i <= StoreCount; ++i)
+        {
+            GameObject store = GameObject.Find("Store" + i.ToString());
 
+            if(store != null)
+            {
+                storeList.Add(store);
+            }
+        }
 
         enemyRigidbody = GetComponent<Rigidbody>();
 
@@ -58,14 +55,14 @@ public class EnemyContoroller : MonoBehaviour {
         }
         else
         {
-
+            //敵の移動方向（どのストアに向かうかということ）を制御するカウンタ
             enemyMoveTime -= Time.deltaTime;
             
             if (enemyMoveTime < 0.0f)
             {
                EnemyMoveMent();
 
-               enemyMoveTime = 1.0f;
+               enemyMoveTime = 3.0f;
             }
 
 
@@ -95,26 +92,23 @@ public class EnemyContoroller : MonoBehaviour {
 
     private void EnemyMoveMent()
     {
-        //Storeとの直線距離
-        Vector3 diff_Store = Store.transform.position - this.transform.position;
-        //Store2との直線距離
-        Vector3 diff_Store2 = Store2.transform.position - this.transform.position;
-        //Store3との直線距離
-        Vector3 diff_Store3 = Store3.transform.position - this.transform.position;
 
-        Mathf.Max(diff_Store.magnitude, diff_Store2.magnitude, diff_Store3.magnitude);
+        int r = Random.Range(0, storeList.Count);
 
-        int num = Random.Range(0, 10);
+        nav.SetDestination(storeList[r].transform.position);
 
-        if(num <= 5)
-        {
-            // Storeに向かって移動(逃げるということ)
-            nav.SetDestination(Store.transform.position);
-        }
-        else
-        {
-            nav.SetDestination(Store3.transform.position);
-        }
+
+        //    int num = Random.Range(0, 10);
+
+        //    if (num <= 5)
+        //    {
+        // Storeに向かって移動(逃げるということ)
+        //    nav.SetDestination(Store.transform.position);
+        //  }
+        //   else
+        //   {
+        //   nav.SetDestination(Store3.transform.position);
+        //  }
 
 
     }
