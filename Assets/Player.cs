@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; //PlayerクラスにScenManaagementって。。後で検討
 
 public class Player : MonoBehaviour {
 
@@ -174,6 +175,8 @@ public class Player : MonoBehaviour {
             this.isEnd = true;
             //stateTextにGAME CLEARを表示
             this.stateText.GetComponent<Text>().text = "CLEAR!!";
+
+            SceneManager.LoadScene("Stage2");
         }
 
 
