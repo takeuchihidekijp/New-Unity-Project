@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+
     //Prefabを入れる
     public GameObject EnemyPrefab;
 
