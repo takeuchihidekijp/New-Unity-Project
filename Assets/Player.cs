@@ -167,6 +167,7 @@ public class Player : MonoBehaviour {
             this.isEnd = true;
             //stateTextにGAME OVERを表示
             this.stateText.GetComponent<Text>().text = "GAME OVER";
+
         }
 
         //ゴール地点に到達した場合
@@ -176,7 +177,7 @@ public class Player : MonoBehaviour {
             //stateTextにGAME CLEARを表示
             this.stateText.GetComponent<Text>().text = "CLEAR!!";
 
-            SceneManager.LoadScene("Stage2");
+            SceneManager.LoadScene("Loading");
         }
 
 
