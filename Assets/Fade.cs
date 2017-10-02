@@ -7,7 +7,7 @@ using System;
 
 public class Fade : MonoBehaviour {
 
-    float fadeSpeed = 0.002f;        //透明度が変わるスピードを管理
+    float fadeSpeed = 0.02f;        //透明度が変わるスピードを管理
     float red, green, blue, alfa;   //パネルの色、不透明度を管理
 
     public bool isFadeOut = false;  //フェードアウト処理の開始、完了を管理するフラグ
@@ -45,6 +45,9 @@ public class Fade : MonoBehaviour {
         {                    //c)完全に透明になったら処理を抜ける
             isFadeIn = false;
             fadeImage.enabled = false;    //d)パネルの表示をオフにする
+
+            //test 新しいステージに遷移
+            SceneManager.LoadScene("Stage2");
         }
     }
 
@@ -54,10 +57,9 @@ public class Fade : MonoBehaviour {
         alfa += fadeSpeed;         // b)不透明度を徐々にあげる
         SetAlpha();               // c)変更した透明度をパネルに反映する
         if (alfa >= 1)
-        {             // d)完全に不透明になったら処理を抜けて新しいステージに遷移
+        {             // d)完全に不透明になったら処理を抜け
             isFadeOut = false;
-            //test
-            SceneManager.LoadScene("Stage2");
+
 
         }
     }
