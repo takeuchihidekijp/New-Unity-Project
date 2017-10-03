@@ -25,6 +25,8 @@ public class EnemyContoroller : MonoBehaviour {
 
         this.Player = GameObject.Find("Player");
 
+        Debug.Log(this.Player);
+
         for (int i= 1; i <= StoreCount; ++i)
         {
             GameObject store = GameObject.Find("Store" + i.ToString());
@@ -80,6 +82,8 @@ public class EnemyContoroller : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
         {
+
+            Debug.Log(this.Player);
 
             // Playerクラスの参照を取得して味方の数を増やす
             Player player = this.Player.gameObject.GetComponent<Player>();
