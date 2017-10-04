@@ -168,6 +168,9 @@ public class Player : MonoBehaviour {
             //stateTextにGAME OVERを表示
             this.stateText.GetComponent<Text>().text = "GAME OVER";
 
+            //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
+            SceneManager.LoadScene("GameOver");
+
         }
 
         //ゴール地点に到達した場合

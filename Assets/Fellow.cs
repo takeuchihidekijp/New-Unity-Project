@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; //PlayerクラスにScenManaagementって。。後で検討
 
 public class Fellow : MonoBehaviour {
 
@@ -45,6 +46,9 @@ public class Fellow : MonoBehaviour {
             this.isEnd = true;
             //stateTextにGAME OVERを表示
             this.stateText.GetComponent<Text>().text = "GAME OVER";
+
+            //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
+            SceneManager.LoadScene("GameOver");
         }
 
         //ゴール地点に到達した場合
