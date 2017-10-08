@@ -180,11 +180,12 @@ public class Player : MonoBehaviour {
             //stateTextにGAME CLEARを表示
             this.stateText.GetComponent<Text>().text = "CLEAR!!";
 
+            //GameData.NUMBER_OF_STAGESの数が一定しないバグ
             GameData.NUMBER_OF_STAGES += 1;
 
             Debug.Log(GameData.NUMBER_OF_STAGES);
 
-            if (GameData.NUMBER_OF_STAGES == GameData.NUMBER_OF_LEVELS)
+            if (GameData.NUMBER_OF_STAGES > GameData.NUMBER_OF_LEVELS)
             {
                 SceneManager.LoadScene("GameClear");
             }

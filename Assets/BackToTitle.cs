@@ -8,13 +8,30 @@ public class BackToTitle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        //title画面へ遷移
-        SceneManager.LoadScene("title");
-
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void ButtonClick()
+    {
+        switch (transform.name)
+        {
+            case "BackToTitle":
+
+            //title画面へ遷移
+            SceneManager.LoadScene("title");
+            break;
+
+            case "Retry":
+
+            //Retryは仮実装
+            SceneManager.LoadScene("title");
+            break;
+
+        }
+
+    }
 }
