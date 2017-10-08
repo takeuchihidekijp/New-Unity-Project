@@ -86,10 +86,6 @@ public class EnemyContoroller : MonoBehaviour {
             Debug.Log(this.Player);
 
             // Playerクラスの参照を取得して味方の数を増やす
-
-            //Player player = this.Player.gameObject.GetComponent<Player>(); がステージ切り替え後に不具合があり、一時的に変更
-            //Player player = collision.gameObject.GetComponent<Player>(); これだと捕まえた敵が敵を捕まえられないので再度変更
-
             Player player = this.Player.gameObject.GetComponent<Player>();
             player.AddFellow();
 
