@@ -174,7 +174,7 @@ public class Player : MonoBehaviour {
         }
 
         //ゴール地点に到達した場合
-        if (collision.gameObject.tag == "Goal")
+        if (collision.gameObject.tag == "Goal" && GameData.IsLoading == false)
         {
             this.isEnd = true;
             //stateTextにGAME CLEARを表示
@@ -183,10 +183,19 @@ public class Player : MonoBehaviour {
             //GameData.NUMBER_OF_STAGESの数が一定しないバグ
             GameData.NUMBER_OF_STAGES += 1;
 
+            // ローディング中のフラグを立てる
+            GameData.IsLoading = true;
+
             Debug.Log(GameData.NUMBER_OF_STAGES);
 
             if (GameData.NUMBER_OF_STAGES > GameData.NUMBER_OF_LEVELS)
             {
+                //クリアしたらステージを初期化
+                GameData.NUMBER_OF_STAGES = 1;
+                GameData.IsLoading = false;
+
+                Debug.Log(GameData.NUMBER_OF_STAGES);
+
                 SceneManager.LoadScene("GameClear");
             }
             else
