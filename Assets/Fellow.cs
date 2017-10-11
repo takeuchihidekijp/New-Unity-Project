@@ -14,6 +14,9 @@ public class Fellow : MonoBehaviour {
     //スコアを表示するテキスト（追加）
     private GameObject scoreText;
 
+    //Playerのオブジェクト
+    private GameObject Player;
+
     //得点(cameraに使うためPublicに変更)
     public int score = 0;
 
@@ -43,12 +46,29 @@ public class Fellow : MonoBehaviour {
         //障害物に衝突した場合(未実装　車などを想定)
         if (collision.gameObject.tag == "Car")
         {
-            this.isEnd = true;
-            //stateTextにGAME OVERを表示
-            this.stateText.GetComponent<Text>().text = "GAME OVER";
+            //車に当たったら残機を減らす。
+            GameData.ILeft -= 1;
 
-            //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
-            SceneManager.LoadScene("GameOver");
+            if (GameData.ILeft == 0)
+            {
+                //ゲームオーバなので初期値に戻す。
+                GameData.ILeft = 3;
+
+                this.isEnd = true;
+                //stateTextにGAME OVERを表示
+                this.stateText.GetComponent<Text>().text = "GAME OVER";
+
+                //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
+                SceneManager.LoadScene("GameOver");
+
+            }
+            else
+            {
+                //Playerを初期位置に移動。
+                Player player = this.Player.GetComponent<Player>();
+                player.ReturnPoint();
+
+            }
         }
 
         //ゴール地点に到達した場合

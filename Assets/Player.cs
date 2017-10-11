@@ -165,7 +165,7 @@ public class Player : MonoBehaviour {
     }
 
     //Playerが死んだときの位置を定める
-    private void ReturnPoint()
+    public void ReturnPoint()
     {
       //  this.transform.localPosition = startPosition;
         this.transform.position = startPosition;
