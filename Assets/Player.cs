@@ -198,7 +198,10 @@ public class Player : MonoBehaviour {
             }
             else
             {
-                SceneManager.LoadScene(GameData.NUMBER_OF_STAGES);
+                // ローディング中のフラグを立てる
+                GameData.IsLoading = true;
+
+                SceneManager.LoadScene("Loading");
             }
 
         }

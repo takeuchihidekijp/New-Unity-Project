@@ -44,8 +44,11 @@ public class Fellow : MonoBehaviour {
     {
 
         //障害物に衝突した場合(未実装　車などを想定)
-        if (this.Player != null && collision.gameObject.tag == "Car")
+        if (collision.gameObject.tag == "Car")
         {
+
+            Debug.Log(this.Player);
+
             //車に当たったら残機を減らす。
             GameData.ILeft -= 1;
 
@@ -64,7 +67,10 @@ public class Fellow : MonoBehaviour {
             }
             else
             {
-                SceneManager.LoadScene(GameData.NUMBER_OF_STAGES);
+                // ローディング中のフラグを立てる
+                GameData.IsLoading = true;
+
+                SceneManager.LoadScene("Loading");
 
             }
         }
