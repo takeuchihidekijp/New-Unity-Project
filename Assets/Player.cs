@@ -198,7 +198,7 @@ public class Player : MonoBehaviour {
             }
             else
             {
-                this.ReturnPoint();
+                SceneManager.LoadScene(GameData.NUMBER_OF_STAGES);
             }
 
         }

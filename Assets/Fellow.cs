@@ -44,7 +44,7 @@ public class Fellow : MonoBehaviour {
     {
 
         //障害物に衝突した場合(未実装　車などを想定)
-        if (collision.gameObject.tag == "Car")
+        if (this.Player != null && collision.gameObject.tag == "Car")
         {
             //車に当たったら残機を減らす。
             GameData.ILeft -= 1;
@@ -64,9 +64,7 @@ public class Fellow : MonoBehaviour {
             }
             else
             {
-                //Playerを初期位置に移動。
-                Player player = this.Player.GetComponent<Player>();
-                player.ReturnPoint();
+                SceneManager.LoadScene(GameData.NUMBER_OF_STAGES);
 
             }
         }
