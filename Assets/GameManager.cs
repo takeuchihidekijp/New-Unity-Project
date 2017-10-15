@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
     //carPrefabを入れる
     public GameObject carPrefab;
 
+    //お菓子を入れる
+    public GameObject Cake;
+
     //アイテムを出すスタート地点(Z)
     private int startPosZ = -120;
     //アイテムを出すゴール地点(Z)
@@ -36,7 +39,6 @@ public class GameManager : MonoBehaviour {
         //敵の出現数をGameDataに合わせる
         for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
         {
-            Debug.Log(i);
 
             int num_x = Random.Range(startPosX, goalPosX);
             int num_z = Random.Range(startPosZ, goalPosZ);
@@ -45,7 +47,11 @@ public class GameManager : MonoBehaviour {
 
             enemy.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
 
+            //試しにお菓子を実装
+            GameObject cake = Instantiate(Cake) as GameObject;
+            cake.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
         }
+
 
     }
 

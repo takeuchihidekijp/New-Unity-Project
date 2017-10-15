@@ -25,7 +25,7 @@ public class EnemyContoroller : MonoBehaviour {
 
         this.Player = GameObject.Find("Player");
 
-        Debug.Log(this.Player);
+     //   Debug.Log(this.Player);
 
         for (int i= 1; i <= StoreCount; ++i)
         {

@@ -22,4 +22,10 @@ public class GameData {
     //敵の数の上限
     public static int NUMBER_OF_ENEMYS = 15;
 
+    //タイムリミット
+    public static float TotalTime = 1 * 60;
+
+    //タイムリミット(TotalTimeから減らしていく)
+    public static float TimeLimit = Time.deltaTime;
+
 }
