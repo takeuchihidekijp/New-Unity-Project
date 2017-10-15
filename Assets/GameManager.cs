@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour {
     //アイテムを出すx方向の幅
     private float posRange = 10;
 
-    //敵の出現数
-    private int enemysNumber = 0;
 
     // Use this for initialization
     void Start () {
@@ -38,6 +36,8 @@ public class GameManager : MonoBehaviour {
         //敵の出現数をGameDataに合わせる
         for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
         {
+            Debug.Log(i);
+
             int num_x = Random.Range(startPosX, goalPosX);
             int num_z = Random.Range(startPosZ, goalPosZ);
 
