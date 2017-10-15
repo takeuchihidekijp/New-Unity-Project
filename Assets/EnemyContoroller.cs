@@ -20,7 +20,7 @@ public class EnemyContoroller : MonoBehaviour {
     //ランダムで選択目的地へ数秒間移動し続けるタイマー
     float enemyMoveTime = 0.0f;
 
-    private bool isDead = false; // 死亡判定フラグ
+    private bool isDead = false; // 死亡判定フラグ(Destoyしても敵がタイミングによって生きていてFellowに追加されるバグ対応)
 
     // Use this for initialization
     void Start() {
@@ -82,6 +82,7 @@ public class EnemyContoroller : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        //isDeadはDestory()してもタイミングによって敵が残って居てFellowに追加されるバグ対応
         if (this.Player != null && collision.gameObject.tag == "Player"  && this.isDead == false)
         {
 
@@ -94,6 +95,7 @@ public class EnemyContoroller : MonoBehaviour {
             player.AddFellow();
 
             Destroy(this.gameObject);
+            //ここでフラグをオンにすることで条件分岐が正しく動くようにする。
             this.isDead = true;
 
         }
