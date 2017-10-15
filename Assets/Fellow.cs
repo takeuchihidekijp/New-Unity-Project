@@ -75,14 +75,6 @@ public class Fellow : MonoBehaviour {
             }
         }
 
-        //ゴール地点に到達した場合
-        if (collision.gameObject.tag == "Goal")
-        {
-            this.isEnd = true;
-            //stateTextにGAME CLEARを表示
-            this.stateText.GetComponent<Text>().text = "CLEAR!!";
-        }
-
 
     }
 }

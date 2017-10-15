@@ -23,7 +23,14 @@ public class Player : MonoBehaviour {
     //得点(cameraに使うためPublicに変更)
     public int score = 0;
 
-    //ゲーム終了の判定
+
+    //タイマーを表示するテキスト（追加）
+    private GameObject timerText;
+
+    //タイマー
+    public float timer = 0.0f;
+
+    //ゲームオーバーの判定（ゲームクリアとは別）
     private bool isEnd = false;
 
     //バウンディングボックス設定用
@@ -59,17 +66,39 @@ public class Player : MonoBehaviour {
         //シーン中のscoreTextオブジェクトを取得
         this.scoreText = GameObject.Find("ScoreText");
 
-
+        //シーン中のtimerTextオブジェクトを取得
+        this.timerText = GameObject.Find("TimerText");
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        //ゲーム終了なら
+        //Timer を減らす。
+        GameData.TotalTime -= GameData.TimeLimit;
+
+        //ScoreText獲得した点数を表示
+        this.timerText.GetComponent<Text>().text = "Time " + GameData.TotalTime + " s";
+
+        if (GameData.TotalTime < 0.0f)
+        {
+            //制限時間超えたらゲームオーバ―
+            this.isEnd = true;
+
+            //stateTextにGAME OVERを表示
+            this.stateText.GetComponent<Text>().text = "GAME OVER";
+        }
+
+
+        //ゲームオーバーなら
         if (this.isEnd)
         {
+            //ゲーム時間を戻す
+            GameData.TotalTime = 1 * 60;
 
+            //仮実装。ゲームオーバ画面へ遷移させる。
+            //TODO ゲームオーバ時にfellow.conutをクリアしなくてよいか確認
+            SceneManager.LoadScene("GameOver");
         }
 
         // 最新の座標のインデックス
@@ -192,9 +221,6 @@ public class Player : MonoBehaviour {
                 //stateTextにGAME OVERを表示
                 this.stateText.GetComponent<Text>().text = "GAME OVER";
 
-                //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
-                SceneManager.LoadScene("GameOver");
-
             }
             else
             {
@@ -209,33 +235,56 @@ public class Player : MonoBehaviour {
         //ゴール地点に到達した場合
         if (collision.gameObject.tag == "Goal" && GameData.IsLoading == false)
         {
-            this.isEnd = true;
-            //stateTextにGAME CLEARを表示
-            this.stateText.GetComponent<Text>().text = "CLEAR!!";
+            Debug.Log(fellows.Count);
 
-            //GameData.NUMBER_OF_STAGESの数が一定しないバグ
-            GameData.NUMBER_OF_STAGES += 1;
-
-            // ローディング中のフラグを立てる
-            GameData.IsLoading = true;
-
-            Debug.Log(GameData.NUMBER_OF_STAGES);
-
-            if (GameData.NUMBER_OF_STAGES > GameData.NUMBER_OF_LEVELS)
+            //ゴールした時にすべての敵を捕まえてない、かつ、残機ゼロだとゲームオーバ
+            if (GameData.NUMBER_OF_ENEMYS > fellows.Count)
             {
-                //クリアしたらステージを初期化
-                GameData.NUMBER_OF_STAGES = 1;
-                GameData.IsLoading = false;
+                //残機を減らす。
+                GameData.ILeft -= 1;
+                if (GameData.ILeft == 0)
+                {
+                    //ゲームオーバなので初期値に戻す。
+                    GameData.ILeft = 3;
 
-                Debug.Log(GameData.NUMBER_OF_STAGES);
+                    this.isEnd = true;
+                }
 
-                SceneManager.LoadScene("GameClear");
+                // ローディング中のフラグを立てる
+                GameData.IsLoading = true;
+
+                SceneManager.LoadScene("Loading");
             }
             else
             {
-                SceneManager.LoadScene("Loading");
-            }
+            //ゴールした時にすべての敵を捕まえている場合はクリア
 
+                //stateTextにGAME CLEARを表示
+                this.stateText.GetComponent<Text>().text = "CLEAR!!";
+
+                //GameData.NUMBER_OF_STAGESの数を加算する
+                GameData.NUMBER_OF_STAGES += 1;
+
+                // ローディング中のフラグを立てる
+                GameData.IsLoading = true;
+
+                Debug.Log(GameData.NUMBER_OF_STAGES);
+
+                if (GameData.NUMBER_OF_STAGES > GameData.NUMBER_OF_LEVELS)
+                {
+                    //クリアしたらステージを初期化
+                    GameData.NUMBER_OF_STAGES = 1;
+                    GameData.IsLoading = false;
+
+                    Debug.Log(GameData.NUMBER_OF_STAGES);
+
+                    SceneManager.LoadScene("GameClear");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Loading");
+                }
+            }
             
         }
 
