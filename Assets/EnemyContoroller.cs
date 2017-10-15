@@ -20,6 +20,8 @@ public class EnemyContoroller : MonoBehaviour {
     //ランダムで選択目的地へ数秒間移動し続けるタイマー
     float enemyMoveTime = 0.0f;
 
+    private bool isDead = false; // 死亡判定フラグ
+
     // Use this for initialization
     void Start() {
 
@@ -80,7 +82,7 @@ public class EnemyContoroller : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (this.Player != null && collision.gameObject.tag == "Player")
+        if (this.Player != null && collision.gameObject.tag == "Player"  && this.isDead == false)
         {
 
             // Playerクラスの参照を取得して味方の数を増やす
@@ -92,6 +94,7 @@ public class EnemyContoroller : MonoBehaviour {
             player.AddFellow();
 
             Destroy(this.gameObject);
+            this.isDead = true;
 
         }
     }
