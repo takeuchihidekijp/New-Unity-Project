@@ -168,16 +168,42 @@ public class Player : MonoBehaviour {
             //stateTextにGAME OVERを表示
             this.stateText.GetComponent<Text>().text = "GAME OVER";
 
+            //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
+            SceneManager.LoadScene("GameOver");
+
         }
 
         //ゴール地点に到達した場合
-        if (collision.gameObject.tag == "Goal")
+        if (collision.gameObject.tag == "Goal" && GameData.IsLoading == false)
         {
             this.isEnd = true;
             //stateTextにGAME CLEARを表示
             this.stateText.GetComponent<Text>().text = "CLEAR!!";
 
-            SceneManager.LoadScene("Loading");
+            //GameData.NUMBER_OF_STAGESの数が一定しないバグ
+            GameData.NUMBER_OF_STAGES += 1;
+
+            // ローディング中のフラグを立てる
+            GameData.IsLoading = true;
+
+            Debug.Log(GameData.NUMBER_OF_STAGES);
+
+            if (GameData.NUMBER_OF_STAGES > GameData.NUMBER_OF_LEVELS)
+            {
+                //クリアしたらステージを初期化
+                GameData.NUMBER_OF_STAGES = 1;
+                GameData.IsLoading = false;
+
+                Debug.Log(GameData.NUMBER_OF_STAGES);
+
+                SceneManager.LoadScene("GameClear");
+            }
+            else
+            {
+                SceneManager.LoadScene("Loading");
+            }
+
+            
         }
 
 

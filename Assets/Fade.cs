@@ -46,8 +46,11 @@ public class Fade : MonoBehaviour {
             isFadeIn = false;
             fadeImage.enabled = false;    //d)パネルの表示をオフにする
 
-            //test 新しいステージに遷移
-            SceneManager.LoadScene("Stage2");
+            //Playerクラスでローディング中のフラグを立てたものを戻す
+            GameData.IsLoading = false;
+
+            //新しいステージに遷移
+            SceneManager.LoadScene(GameData.NUMBER_OF_STAGES);
         }
     }
 
