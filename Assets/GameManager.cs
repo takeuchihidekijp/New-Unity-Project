@@ -35,31 +35,16 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        //一定の距離ごとにアイテムを生成
-        for(int i = startPosZ; i < goalPosZ; i += 15)
+        //敵の出現数をGameDataに合わせる
+        for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
         {
+            int num_x = Random.Range(startPosX, goalPosX);
+            int num_z = Random.Range(startPosZ, goalPosZ);
 
+            GameObject enemy = Instantiate(EnemyPrefab) as GameObject;
 
+            enemy.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
 
-
-                int num = Random.Range(0, 10);
-
-                if(num <= 1)
-                {
-
-                    for (int j =startPosX; j < goalPosX; j += 30)
-                    {
-                        //敵の出現数をGameDataに合わせる（バグあり。設定数が保証されない
-                        if (enemysNumber < GameData.NUMBER_OF_ENEMYS)
-                            {
-                                GameObject enemy = Instantiate(EnemyPrefab) as GameObject;
-                                enemy.transform.position = new Vector3(j, enemy.transform.position.y, i);
-
-                                enemysNumber += 1;
-                            }
-
-                    }
-                }
         }
 
     }
