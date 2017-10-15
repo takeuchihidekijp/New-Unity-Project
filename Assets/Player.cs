@@ -205,14 +205,6 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
 
-        //お菓子と接触したらリミット時間を増やす
-        if(collision.gameObject.tag == "Cake")
-        {
-            //Timer を増やす。時間は仮
-            GameData.TotalTime += 5;
-
-        }
-
         //障害物に衝突した場合(未実装　車などを想定)
         if (collision.gameObject.tag == "Car")
         {
