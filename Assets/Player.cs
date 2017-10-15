@@ -29,12 +29,19 @@ public class Player : MonoBehaviour {
     //バウンディングボックス設定用
     private Vector3 cameraFocusPoint;
 
+    //死んだ際のプレイヤーの戻り位置
+    private Vector3 startPosition;
+
     // Use this for initialization
     void Start () {
         //FrameRateがandroidとiPhoneで異なることがあるのでここで合わせておく
         //FrameRateがandroid 60のことが多い。端末の問題。iPhoneは３０のことが多い。60 はオーバースペック
         Application.targetFrameRate = 30;
 
+        //最初に死んだ際の位置を取得しておく。
+        startPosition = this.transform.position;
+
+        //Playerの位置の座標を設定
         PlayerPositionLog.Add(this.transform.position);
 
         // Playerの位置を最初に設定しておくことで最初や２番目に捕まえた敵の位置が固定で動かなくなる事象を回避
@@ -157,6 +164,14 @@ public class Player : MonoBehaviour {
         this.scoreText.GetComponent<Text>().text = "Score " + this.score + "pt";
     }
 
+    //Playerが死んだときの位置を定める
+    public void ReturnPoint()
+    {
+      //  this.transform.localPosition = startPosition;
+        this.transform.position = startPosition;
+
+    }
+
     // Playerが他のオブジェクトと接触した場合の処理
     private void OnCollisionEnter(Collision collision)
     {
@@ -164,12 +179,30 @@ public class Player : MonoBehaviour {
         //障害物に衝突した場合(未実装　車などを想定)
         if (collision.gameObject.tag == "Car")
         {
-            this.isEnd = true;
-            //stateTextにGAME OVERを表示
-            this.stateText.GetComponent<Text>().text = "GAME OVER";
 
-            //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
-            SceneManager.LoadScene("GameOver");
+            //車に当たったら残機を減らす。
+            GameData.ILeft -= 1;
+
+            if(GameData.ILeft == 0)
+            {
+                //ゲームオーバなので初期値に戻す。
+                GameData.ILeft = 3;
+
+                this.isEnd = true;
+                //stateTextにGAME OVERを表示
+                this.stateText.GetComponent<Text>().text = "GAME OVER";
+
+                //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
+                SceneManager.LoadScene("GameOver");
+
+            }
+            else
+            {
+                // ローディング中のフラグを立てる
+                GameData.IsLoading = true;
+
+                SceneManager.LoadScene("Loading");
+            }
 
         }
 
