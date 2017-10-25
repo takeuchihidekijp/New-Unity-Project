@@ -41,21 +41,22 @@ public class GameManager : MonoBehaviour {
     void Start () {
 
         //敵の出現数をGameDataに合わせる
-        for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
-        {
+        //   for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
+        // {
+        //
+        // int num_x = Random.Range(startPosX, goalPosX);
+        // int num_z = Random.Range(startPosZ, goalPosZ);
+        //
+        // GameObject enemy = Instantiate(EnemyPrefab) as GameObject;
+        //
+        // enemy.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
+        //
+        //試しにお菓子を実装
+        //GameObject cake = Instantiate(Cake) as GameObject;
+        //cake.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
+        // }
 
-            int num_x = Random.Range(startPosX, goalPosX);
-            int num_z = Random.Range(startPosZ, goalPosZ);
-
-            GameObject enemy = Instantiate(EnemyPrefab) as GameObject;
-
-            enemy.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
-
-            //試しにお菓子を実装
-            GameObject cake = Instantiate(Cake) as GameObject;
-            cake.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
-        }
-
+        CreateEnemys();
 
     }
 
@@ -83,9 +84,9 @@ public class GameManager : MonoBehaviour {
         spawnPositions.Clear();
 
         //xとz の四角形を作る。Unityの位置情報なのでX軸とZ軸(仮で10．もっと大きくするもしくは位置を0からではなくすることも検討)
-        for(int x = 0; x < 10; x++)
+        for(int x = startPosX; goalPosX < 80; x++)
         {
-            for(int z =0; z < 10; z++)
+            for(int z = startPosZ; goalPosZ < 10; z++)
             {
                 //Positionsを埋めていくので*3は範囲を余裕を持たせている
                 Vector3 Pos = new Vector3(x * 3, 0, z * 3);
