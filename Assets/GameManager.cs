@@ -56,7 +56,11 @@ public class GameManager : MonoBehaviour {
         //cake.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
         // }
 
+        InitSpawnPos();
+
         CreateEnemys();
+
+        CreateItems();
 
     }
 
@@ -84,12 +88,12 @@ public class GameManager : MonoBehaviour {
         spawnPositions.Clear();
 
         //xとz の四角形を作る。Unityの位置情報なのでX軸とZ軸(仮で10．もっと大きくするもしくは位置を0からではなくすることも検討)
-        for(int x = startPosX; goalPosX < 80; x++)
+        for(int x = startPosX; x < goalPosX; x += 3)
         {
-            for(int z = startPosZ; goalPosZ < 10; z++)
+            for(int z = startPosZ; z < goalPosZ; z += 3)
             {
                 //Positionsを埋めていくので*3は範囲を余裕を持たせている
-                Vector3 Pos = new Vector3(x * 3, 0, z * 3);
+                Vector3 Pos = new Vector3(x, 0, z);
                 Vector3 PosTop = Pos + new Vector3(0, 30, 0);
 
                 RaycastHit hit;
@@ -121,14 +125,25 @@ public class GameManager : MonoBehaviour {
 
     void CreateEnemys()
     {
-        InitSpawnPos();
-
-        for(int i = 0; i < 10; i++)
+        //敵をループの数だけ出現させる。
+        for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
         {
             Vector3 pos = GetSpawnPos();
 
             GameObject enemy = Instantiate(EnemyPrefab, pos, Quaternion.identity);
         }
+    }
+
+    void CreateItems()
+    {
+        //アイテムをループの数だけ出現させる。
+        for(int i =0; i < 10; i++)
+        {
+            Vector3 pos = GetSpawnPos();
+
+            GameObject cake = Instantiate(Cake, pos, Quaternion.identity);
+        }
+
     }
 
 }
