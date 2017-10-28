@@ -32,26 +32,35 @@ public class GameManager : MonoBehaviour {
     //アイテムを出すx方向の幅
     private float posRange = 10;
 
+    //Raycast実装
+    List<Vector3> spawnPositions = new List<Vector3>();
+
+
 
     // Use this for initialization
     void Start () {
 
         //敵の出現数をGameDataに合わせる
-        for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
-        {
+        //   for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
+        // {
+        //
+        // int num_x = Random.Range(startPosX, goalPosX);
+        // int num_z = Random.Range(startPosZ, goalPosZ);
+        //
+        // GameObject enemy = Instantiate(EnemyPrefab) as GameObject;
+        //
+        // enemy.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
+        //
+        //試しにお菓子を実装
+        //GameObject cake = Instantiate(Cake) as GameObject;
+        //cake.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
+        // }
 
-            int num_x = Random.Range(startPosX, goalPosX);
-            int num_z = Random.Range(startPosZ, goalPosZ);
+        InitSpawnPos();
 
-            GameObject enemy = Instantiate(EnemyPrefab) as GameObject;
+        CreateEnemys();
 
-            enemy.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
-
-            //試しにお菓子を実装
-            GameObject cake = Instantiate(Cake) as GameObject;
-            cake.transform.position = new Vector3(num_x, enemy.transform.position.y, num_z);
-        }
-
+        CreateItems();
 
     }
 
@@ -72,4 +81,69 @@ public class GameManager : MonoBehaviour {
         }
 
     }
+
+    // 生成するオブジェクトが重ならないように位置情報を設定
+    void InitSpawnPos()
+    {
+        spawnPositions.Clear();
+
+        //xとz の四角形を作る。Unityの位置情報なのでX軸とZ軸(仮で10．もっと大きくするもしくは位置を0からではなくすることも検討)
+        for(int x = startPosX; x < goalPosX; x += 3)
+        {
+            for(int z = startPosZ; z < goalPosZ; z += 3)
+            {
+                //Positionsを埋めていくので*3は範囲を余裕を持たせている
+                Vector3 Pos = new Vector3(x, 0, z);
+                Vector3 PosTop = Pos + new Vector3(0, 30, 0);
+
+                RaycastHit hit;
+
+                //四角形の範囲で上からRaycastを投げてFloor（何もない）だったところにPositionsを埋めていく。
+                if (Physics.Raycast(PosTop, Vector3.down, out hit, 50f) == true)
+                {
+                    if(hit.collider.name == "Floor")
+                    {
+                        spawnPositions.Add(Pos);
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    Vector3 GetSpawnPos()
+    {
+        //spawnPositionsの数だけランダムに
+        int r = Random.Range(0, spawnPositions.Count);
+        Vector3 pos = spawnPositions[r];
+        //取得したところから消していく。
+        spawnPositions.RemoveAt(r);
+
+        return pos;
+    }
+
+    void CreateEnemys()
+    {
+        //敵をループの数だけ出現させる。
+        for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
+        {
+            Vector3 pos = GetSpawnPos();
+
+            GameObject enemy = Instantiate(EnemyPrefab, pos, Quaternion.identity);
+        }
+    }
+
+    void CreateItems()
+    {
+        //アイテムをループの数だけ出現させる。
+        for(int i =0; i < 10; i++)
+        {
+            Vector3 pos = GetSpawnPos();
+
+            GameObject cake = Instantiate(Cake, pos, Quaternion.identity);
+        }
+
+    }
+
 }
