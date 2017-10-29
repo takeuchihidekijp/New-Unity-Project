@@ -28,7 +28,7 @@ public class CarGenerator : MonoBehaviour {
             car.transform.position = this.transform.position;
 
             // 回転
-            car.transform.rotation = this.transform.rotation;
+         //   car.transform.rotation = this.transform.rotation;
 
             //発生間隔をランダムにする(数値は仮)
             carCreateTime = 2.0f;

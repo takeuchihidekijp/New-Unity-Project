@@ -67,18 +67,19 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        carCreateTime -= Time.deltaTime;
+        //車の出現はここではなくGarGeneratorクラスで統一。
+  //      carCreateTime -= Time.deltaTime;
 
-        if (carCreateTime < 0.0f)
-        {
+    //    if (carCreateTime < 0.0f)
+    //    {
             // 新しくクルマを作る
-            GameObject car = Instantiate(carPrefab) as GameObject;
-            car.transform.position = new Vector3(-81, 3, 55);
+      //      GameObject car = Instantiate(carPrefab) as GameObject;
+      //      car.transform.position = new Vector3(-81, 3, 55);
 
 
             //発生間隔をランダムにする(数値は仮)
-            carCreateTime = 2.0f;
-        }
+    //        carCreateTime = 2.0f;
+    //    }
 
     }
 
@@ -93,7 +94,7 @@ public class GameManager : MonoBehaviour {
             for(int z = startPosZ; z < goalPosZ; z += 3)
             {
                 //Positionsを埋めていくので*3は範囲を余裕を持たせている
-                Vector3 Pos = new Vector3(x, 0, z);
+                Vector3 Pos = new Vector3(x, 1.5f, z);
                 Vector3 PosTop = Pos + new Vector3(0, 30, 0);
 
                 RaycastHit hit;
