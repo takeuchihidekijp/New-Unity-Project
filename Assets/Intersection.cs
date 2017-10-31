@@ -45,13 +45,21 @@ public class Intersection : MonoBehaviour {
 
 			yield return new WaitForSeconds (5.0f);
 
-			//横の信号を黄色に
+            //横の信号を黄色に
+            colliderN.SetActive(true);
+            colliderS.SetActive(true);
+            colliderW.SetActive(true);
+            colliderE.SetActive(true);
 
-			yield return new WaitForSeconds (1.0f);
+            yield return new WaitForSeconds (1.0f);
 
-			//横の信号を赤に、縦の信号を青に
+            //横の信号を赤に、縦の信号を青に
+            colliderN.SetActive(false);
+            colliderS.SetActive(false);
+            colliderW.SetActive(true);
+            colliderE.SetActive(true);
 
-		}
+        }
 
 		yield return null;
 	}
