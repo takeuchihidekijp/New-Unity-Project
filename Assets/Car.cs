@@ -21,7 +21,7 @@ public class Car : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //carに前方向の力を加える（追加）
+        //carに前方向の力を加える（追加） collision.gameObject.tag == "Player"
         this.myRigidbody.AddForce(this.transform.forward * this.forwardForce);
 
         //障害物を検知したら止まる
@@ -29,7 +29,8 @@ public class Car : MonoBehaviour {
 
         if(Physics.Raycast(this.transform.position,Vector3.forward, out hit, 5f) == true)
         {
-            if(hit.collider.name == "Enemy")
+            //if(hit.collider.name == "Enemy")
+            if (hit.collider.gameObject.tag == "Player")
             {
                 this.myRigidbody.velocity = Vector3.zero;
             }
