@@ -21,16 +21,17 @@ public class Car : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //carに前方向の力を加える（追加） collision.gameObject.tag == "Player"
+        //carに前方向の力を加える（追加）
         this.myRigidbody.AddForce(this.transform.forward * this.forwardForce);
 
         //障害物を検知したら止まる
         RaycastHit hit;
 
-        if(Physics.Raycast(this.transform.position,Vector3.forward, out hit, 5f) == true)
+        Debug.DrawLine(this.transform.position, this.transform.position + this.transform.forward * 50, Color.red);
+
+        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, 50f) == true)
         {
-            //if(hit.collider.name == "Enemy")
-            if (hit.collider.gameObject.tag == "Player")
+            if(hit.collider.gameObject.tag == "Enemy" || hit.collider.gameObject.tag == "Car")
             {
                 this.myRigidbody.velocity = Vector3.zero;
             }
