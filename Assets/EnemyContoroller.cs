@@ -54,7 +54,7 @@ public class EnemyContoroller : MonoBehaviour {
 
         if (diff.magnitude > 300)
         {
-            // プレイヤーからの直線距離が 100 以上のときPlayerに向かって移動
+            // プレイヤーからの直線距離が 300 以上のときPlayerに向かって移動
             nav.SetDestination(Player.transform.position);
         }
         else

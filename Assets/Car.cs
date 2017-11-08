@@ -10,7 +10,7 @@ public class Car : MonoBehaviour {
     //Carを移動させるコンポーネントを入れる
     private Rigidbody myRigidbody;
     //Carを前進するための力
-    private float forwardForce = 50.0f;
+    private float forwardForce = 30.0f;
 
     // Use this for initialization
     void Start () {
@@ -38,7 +38,7 @@ public class Car : MonoBehaviour {
         }
 
 
-        if(this.transform.position.z < -140)
+        if(this.transform.position.z < -100)
         {
             Destroy(this.gameObject);
         }
