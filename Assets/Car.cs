@@ -12,10 +12,15 @@ public class Car : MonoBehaviour {
     //Carを前進するための力
     private float forwardForce = 30.0f;
 
+    float carCreateTime = 0.0f;
+
+
     // Use this for initialization
     void Start () {
         //Rigidbodyコンポーネントを取得
         this.myRigidbody = GetComponent<Rigidbody>();
+
+         carCreateTime = 0.0f;
     }
 	
 	// Update is called once per frame
@@ -37,8 +42,9 @@ public class Car : MonoBehaviour {
             }
         }
 
+        carCreateTime += Time.deltaTime;
 
-        if(this.transform.position.z < -100)
+        if (this.carCreateTime > 50)
         {
             Destroy(this.gameObject);
         }
