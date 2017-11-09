@@ -10,34 +10,41 @@ public class Car : MonoBehaviour {
     //Carを移動させるコンポーネントを入れる
     private Rigidbody myRigidbody;
     //Carを前進するための力
-    private float forwardForce = 50.0f;
+    private float forwardForce = 30.0f;
+
+    float carCreateTime = 0.0f;
+
 
     // Use this for initialization
     void Start () {
         //Rigidbodyコンポーネントを取得
         this.myRigidbody = GetComponent<Rigidbody>();
+
+         carCreateTime = 0.0f;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        //carに前方向の力を加える（追加） collision.gameObject.tag == "Player"
+        //carに前方向の力を加える（追加）
         this.myRigidbody.AddForce(this.transform.forward * this.forwardForce);
 
         //障害物を検知したら止まる
         RaycastHit hit;
 
-        if(Physics.Raycast(this.transform.position,Vector3.forward, out hit, 5f) == true)
+        Debug.DrawLine(this.transform.position, this.transform.position + this.transform.forward * 50, Color.red);
+
+        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, 50f) == true)
         {
-            //if(hit.collider.name == "Enemy")
-            if (hit.collider.gameObject.tag == "Player")
+            if(hit.collider.gameObject.tag == "Enemy" || hit.collider.gameObject.tag == "Car")
             {
                 this.myRigidbody.velocity = Vector3.zero;
             }
         }
 
+        carCreateTime += Time.deltaTime;
 
-        if(this.transform.position.z < -140)
+        if (this.carCreateTime > 50)
         {
             Destroy(this.gameObject);
         }
