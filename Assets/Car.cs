@@ -44,7 +44,7 @@ public class Car : MonoBehaviour {
 
         carCreateTime += Time.deltaTime;
 
-        if (this.carCreateTime > 50)
+        if (this.carCreateTime > 30)
         {
             Destroy(this.gameObject);
         }
