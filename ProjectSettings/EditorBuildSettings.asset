@@ -26,3 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Loading.unity
     guid: d8413b235c6729543803f6defce48bfc
+  - enabled: 1
+    path: Assets/GameClear.unity
+    guid: fb7705d729bd8864e8ff9605848ea665
+  - enabled: 1
+    path: Assets/GameOver.unity
+    guid: 7d6930b1a02eb9544affd1261228fc25
