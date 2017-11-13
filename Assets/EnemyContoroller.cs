@@ -66,7 +66,7 @@ public class EnemyContoroller : MonoBehaviour {
             {
                EnemyMoveMent();
 
-               enemyMoveTime = 10.0f;
+               enemyMoveTime = 20.0f;
             }
 
 
