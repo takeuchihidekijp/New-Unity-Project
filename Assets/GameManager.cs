@@ -102,7 +102,9 @@ public class GameManager : MonoBehaviour {
                 //四角形の範囲で上からRaycastを投げてFloor（何もない）だったところにPositionsを埋めていく。
                 if (Physics.Raycast(PosTop, Vector3.down, out hit, 50f) == true)
                 {
-                    if(hit.collider.name == "Floor")
+                //    if(hit.collider.name == "Floor")
+                //マップをTerianにしたため以下の条件に変更
+                    if (hit.collider.name == "Floor" || hit.collider.name == "Terrain")
                     {
                         spawnPositions.Add(Pos);
                     }
