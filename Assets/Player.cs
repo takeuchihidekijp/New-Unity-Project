@@ -119,7 +119,7 @@ public class Player : MonoBehaviour {
         {
             var fellow = fellows[i]; // 配列をインデックスでアクセス
             //100は、仮。過去の履歴の１００番目ということになる。なので10にしておく。10にするとスネークゲームっぽくなる。
-            int index = lastIndex - (i + 1) * 10;
+            int index = lastIndex - (i + 1) * 5;
 
             // インデックスが０未満の場合は捕まえた敵の位置をPlayerと合わせることはしない
             if (index >= 0)
