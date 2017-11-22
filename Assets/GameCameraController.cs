@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour {
+//Class 名をCameraControllerからGameCameraControllerに変更。アセットにCameraControllerクラスが含まれていたためこっちを変更。
+public class GameCameraController : MonoBehaviour {
 
     //Playerのオブジェクト
     private GameObject Player;
@@ -31,6 +32,9 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate() {
+
+        //クラス名を「CameraController」から「」に変更したことにより影響範囲について確認するためログ出力
+        Debug.Log(this.gameObject.name);
 
         //バウンディングボックスからデータを取得
         Player playerClass = this.Player.GetComponent<Player>();
