@@ -31,7 +31,8 @@ public class CarGenerator : MonoBehaviour {
 			car.transform.rotation = this.transform.rotation * Quaternion.Euler(0,180,0);
 
             //発生間隔をランダムにする(数値は仮)
-            carCreateTime = 5.0f;
+            //TODO ステージによって生成間隔を調整する。
+            carCreateTime = 10.0f;
         }
 
     }

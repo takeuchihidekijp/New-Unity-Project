@@ -42,6 +42,7 @@ public class Car : MonoBehaviour {
             }
         }
 
+        //生成から一定期間たった車は消す
         carCreateTime += Time.deltaTime;
 
         if (this.carCreateTime > 30)
