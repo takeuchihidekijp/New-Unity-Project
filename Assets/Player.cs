@@ -125,6 +125,8 @@ public class Player : MonoBehaviour {
             if (index >= 0)
             {
                 fellow.transform.position = PlayerPositionLog[index];
+                //追加
+                fellow.transform.LookAt(PlayerPositionLog[index + 1]);  // 追加
             }
 
 
