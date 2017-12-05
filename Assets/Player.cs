@@ -39,6 +39,9 @@ public class Player : MonoBehaviour {
     //死んだ際のプレイヤーの戻り位置
     private Vector3 startPosition;
 
+    //ステージごとのハイスコア保存用
+    int HIGH_SCORE_KEY = GameData.NUMBER_OF_STAGES;
+
     // Use this for initialization
     void Start () {
         //FrameRateがandroidとiPhoneで異なることがあるのでここで合わせておく
@@ -267,6 +270,10 @@ public class Player : MonoBehaviour {
 
                 //stateTextにGAME CLEARを表示
                 this.stateText.GetComponent<Text>().text = "CLEAR!!";
+
+                //ハイスコア保存
+            //    PlayerPrefs.SetFloat("HIGH_SCORE_KEY", timer);
+
 
                 //GameData.NUMBER_OF_STAGESの数を加算する
                 GameData.NUMBER_OF_STAGES += 1;
