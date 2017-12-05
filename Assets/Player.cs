@@ -189,10 +189,14 @@ public class Player : MonoBehaviour {
 		fellows.Add (ins);
 
         // スコアを加算
-        this.score += 10;
+        //+10から1に変更。捕まえた人がわかるような表示とする。
+        //this.score += 10;
+        this.score += 1;
 
         //ScoreText獲得した点数を表示
-        this.scoreText.GetComponent<Text>().text = "Score " + this.score + "pt";
+        //捕まえた人がわかるような表示とする。
+        //this.scoreText.GetComponent<Text>().text = "Score " + this.score + "pt";
+        this.scoreText.GetComponent<Text>().text = "あと " + this.score + "/ 16 人";
     }
 
     //Playerが死んだときの位置を定める

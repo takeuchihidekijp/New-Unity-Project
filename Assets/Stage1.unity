@@ -5535,7 +5535,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score 0pt
+  m_Text: "\u3042\u3068 0/16\u4EBA"
 --- !u!222 &1603832727
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6355,7 +6355,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1824754210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -156, y: 1.5, z: 519}
+  m_LocalPosition: {x: -155.2, y: 3.4, z: 595.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7537,7 +7537,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2100274629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 363, y: 1.5, z: 519}
+  m_LocalPosition: {x: 363, y: 1.5, z: 637.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

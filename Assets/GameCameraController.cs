@@ -40,7 +40,9 @@ public class GameCameraController : MonoBehaviour {
         Player playerClass = this.Player.GetComponent<Player>();
         Vector3 cameraPos = playerClass.GetCameraPos();
 
-        float dist = playerClass.score * 0.4f;
+        //Scoreを＋１０から＋１にしたことによる修正
+        //float dist = playerClass.score * 0.4f;
+        float dist = playerClass.score * 10 * 0.4f;
 
         //バウンディングボックスの位置に合わせてカメラの位置を移動(cameraPos.y + playerClass.scoreとすることで敵を捕まえたらカメラの位置を上に移動)
         //Lerpの値は調整中(Zだけ「dist * 2」をしているが下に移動する際にカメラが外れるため。まだ調整中。
