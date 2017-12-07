@@ -26,6 +26,7 @@ public class GameData {
     public static float TotalTime = 2 * 60;
 
     //タイムリミット(TotalTimeから減らしていく)
-    public static float TimeLimit = Time.deltaTime;
+    //deltaTimeはUpdate内での実装が必要なため取る。（今までは動作していたのだが。。）
+    //  public static float TimeLimit = Time.deltaTime;
 
 }

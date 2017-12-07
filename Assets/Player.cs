@@ -78,7 +78,8 @@ public class Player : MonoBehaviour {
 	void Update () {
 
         //Timer を減らす。
-        GameData.TotalTime -= GameData.TimeLimit;
+        //GameData.TotalTime -= GameData.TimeLimit;
+        GameData.TotalTime -= Time.deltaTime;
 
         //ScoreText獲得した点数を表示
         this.timerText.GetComponent<Text>().text = "Time " + GameData.TotalTime + " s";
@@ -89,7 +90,7 @@ public class Player : MonoBehaviour {
             this.isEnd = true;
 
             //stateTextにGAME OVERを表示
-            this.stateText.GetComponent<Text>().text = "GAME OVER";
+            this.stateText.GetComponent<Text>().text = "時間切れ！";
         }
 
 
@@ -228,7 +229,7 @@ public class Player : MonoBehaviour {
 
                 this.isEnd = true;
                 //stateTextにGAME OVERを表示
-                this.stateText.GetComponent<Text>().text = "GAME OVER";
+                this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
 
             }
             else
@@ -269,10 +270,10 @@ public class Player : MonoBehaviour {
             //ゴールした時にすべての敵を捕まえている場合はクリア
 
                 //stateTextにGAME CLEARを表示
-                this.stateText.GetComponent<Text>().text = "CLEAR!!";
+                this.stateText.GetComponent<Text>().text = "学校についた!!";
 
                 //ハイスコア保存
-            //    PlayerPrefs.SetFloat("HIGH_SCORE_KEY", timer);
+                PlayerPrefs.SetFloat("HIGH_SCORE_KEY", timer);
 
 
                 //GameData.NUMBER_OF_STAGESの数を加算する
