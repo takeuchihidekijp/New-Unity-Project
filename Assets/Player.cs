@@ -20,6 +20,9 @@ public class Player : MonoBehaviour {
     //スコアを表示するテキスト（追加）
     private GameObject scoreText;
 
+    //残基数を表示するテキスト
+    private GameObject lifeText;
+
     //得点(cameraに使うためPublicに変更)
     public int score = 0;
 
@@ -75,10 +78,15 @@ public class Player : MonoBehaviour {
         //シーン中のtimerTextオブジェクトを取得
         this.timerText = GameObject.Find("TimerText");
 
+        //シーン中のLifeTextオブジェクトを取得
+        this.lifeText = GameObject.Find("LifeText");
+        
+        //LifeText初期表示
+        this.lifeText.GetComponent<Text>().text = "残り" + GameData.ILeft + " / 3";
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         //Timer を減らす。
         //GameData.TotalTime -= GameData.TimeLimit;
@@ -86,6 +94,9 @@ public class Player : MonoBehaviour {
 
         //ScoreText獲得した点数を表示
         this.timerText.GetComponent<Text>().text = "Time " + GameData.TotalTime + " s";
+
+        //LifeTextの表示
+        this.lifeText.GetComponent<Text>().text = "残り" + GameData.ILeft + " / 3";
 
         if (GameData.TotalTime < 0.0f)
         {
@@ -114,6 +125,12 @@ public class Player : MonoBehaviour {
 
             //仮実装。ゲームオーバ画面へ遷移させる。
             //TODO ゲームオーバ時にfellow.conutをクリアしなくてよいか確認
+            
+            // ローディング中のフラグを立てる
+            GameData.IsLoading = true;
+
+            SceneManager.LoadScene("Loading");
+
             SceneManager.LoadScene("GameOver");
         }
 
@@ -239,8 +256,6 @@ public class Player : MonoBehaviour {
 
             if (GameData.ILeft == 0)
             {
-                //ゲームオーバなので初期値に戻す。
-                GameData.ILeft = 3;
 
                 this.isEnd = true;
                 //stateTextにGAME OVERを表示
@@ -273,8 +288,6 @@ public class Player : MonoBehaviour {
 
                 if (GameData.ILeft == 0)
                 {
-                    //ゲームオーバなので初期値に戻す。
-                    GameData.ILeft = 3;
 
                     this.isEnd = true;
                 }
@@ -322,10 +335,17 @@ public class Player : MonoBehaviour {
 
                     Debug.Log(GameData.NUMBER_OF_STAGES);
 
+                    // ローディング中のフラグを立てる
+                    GameData.IsLoading = true;
+                    SceneManager.LoadScene("Loading");
+
                     SceneManager.LoadScene("GameClear");
                 }
                 else
                 {
+                    // ローディング中のフラグを立てる
+                    GameData.IsLoading = true;
+
                     SceneManager.LoadScene("Loading");
                 }
             }
