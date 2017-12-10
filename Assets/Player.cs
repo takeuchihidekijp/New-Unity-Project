@@ -39,8 +39,11 @@ public class Player : MonoBehaviour {
     //死んだ際のプレイヤーの戻り位置
     private Vector3 startPosition;
 
-    //ステージごとのハイスコア保存用
-    int HIGH_SCORE_KEY = GameData.NUMBER_OF_STAGES;
+    //ベストスコア保存用
+    const string HIGH_SCORE_KEY_BEST = "highScore";
+
+    //スコア保存用
+    const string SCORE_KEY = "Score";
 
     // Use this for initialization
     void Start () {
@@ -98,7 +101,16 @@ public class Player : MonoBehaviour {
         if (this.isEnd)
         {
             //ゲーム時間を戻す
-            GameData.TotalTime = 1 * 60;
+            GameData.TotalTime = 2 * 60;
+
+            //ステージを初期化
+            GameData.NUMBER_OF_STAGES = 1;
+            GameData.IsLoading = false;
+
+            GameData.ILeft = 3;
+
+            //時間の初期化（要確認）
+            GameData.TotalScoreTime = 0.0f;
 
             //仮実装。ゲームオーバ画面へ遷移させる。
             //TODO ゲームオーバ時にfellow.conutをクリアしなくてよいか確認
@@ -222,14 +234,17 @@ public class Player : MonoBehaviour {
             //車に当たったら残機を減らす。
             GameData.ILeft -= 1;
 
-            if(GameData.ILeft == 0)
+            //stateTextメッセージを表示
+            this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
+
+            if (GameData.ILeft == 0)
             {
                 //ゲームオーバなので初期値に戻す。
                 GameData.ILeft = 3;
 
                 this.isEnd = true;
                 //stateTextにGAME OVERを表示
-                this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
+                this.stateText.GetComponent<Text>().text = "車にあたっちゃって残念！GameOver！";
 
             }
             else
@@ -252,6 +267,10 @@ public class Player : MonoBehaviour {
             {
                 //残機を減らす。
                 GameData.ILeft -= 1;
+
+                //stateTextメッセージを表示
+                this.stateText.GetComponent<Text>().text = "全員捕まえてないよ！";
+
                 if (GameData.ILeft == 0)
                 {
                     //ゲームオーバなので初期値に戻す。
@@ -272,8 +291,8 @@ public class Player : MonoBehaviour {
                 //stateTextにGAME CLEARを表示
                 this.stateText.GetComponent<Text>().text = "学校についた!!";
 
-                //ハイスコア保存
-                PlayerPrefs.SetFloat("HIGH_SCORE_KEY", timer);
+                //総合時間にクリア時間を加える
+                GameData.TotalScoreTime = timer;
 
 
                 //GameData.NUMBER_OF_STAGESの数を加算する
@@ -286,9 +305,20 @@ public class Player : MonoBehaviour {
 
                 if (GameData.NUMBER_OF_STAGES > GameData.NUMBER_OF_LEVELS)
                 {
+                    //スコア保存
+                    PlayerPrefs.SetFloat(GameData.SCORE_KEY, timer);
+                    PlayerPrefs.Save();
+
                     //クリアしたらステージを初期化
                     GameData.NUMBER_OF_STAGES = 1;
                     GameData.IsLoading = false;
+
+                    GameData.ILeft = 3;
+
+                    //時間の初期化（要確認）
+                    GameData.TotalScoreTime = 0.0f;
+                    GameData.TotalTime = 2 * 60;
+
 
                     Debug.Log(GameData.NUMBER_OF_STAGES);
 

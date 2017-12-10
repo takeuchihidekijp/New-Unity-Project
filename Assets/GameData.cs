@@ -25,6 +25,15 @@ public class GameData {
     //タイムリミット
     public static float TotalTime = 2 * 60;
 
+    //ステージのタイム合計
+    public static float TotalScoreTime = 0.0f;
+
+    //スコア保存用
+    public static string SCORE_KEY = "Score";
+
+    //ベストスコア保存用
+    public static string HIGH_SCORE_KEY_BEST = "highScore";
+
     //タイムリミット(TotalTimeから減らしていく)
     //deltaTimeはUpdate内での実装が必要なため取る。（今までは動作していたのだが。。）
     //  public static float TimeLimit = Time.deltaTime;
