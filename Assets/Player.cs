@@ -126,10 +126,6 @@ public class Player : MonoBehaviour {
             //仮実装。ゲームオーバ画面へ遷移させる。
             //TODO ゲームオーバ時にfellow.conutをクリアしなくてよいか確認
             
-            // ローディング中のフラグを立てる
-            GameData.IsLoading = true;
-
-            SceneManager.LoadScene("Loading");
 
             SceneManager.LoadScene("GameOver");
         }
@@ -335,9 +331,6 @@ public class Player : MonoBehaviour {
 
                     Debug.Log(GameData.NUMBER_OF_STAGES);
 
-                    // ローディング中のフラグを立てる
-                    GameData.IsLoading = true;
-                    SceneManager.LoadScene("Loading");
 
                     SceneManager.LoadScene("GameClear");
                 }
