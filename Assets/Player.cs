@@ -301,7 +301,7 @@ public class Player : MonoBehaviour {
                 this.stateText.GetComponent<Text>().text = "学校についた!!";
 
                 //総合時間にクリア時間を加える
-                GameData.TotalScoreTime = timer;
+                GameData.TotalScoreTime += GameData.TotalTime;
 
 
                 //GameData.NUMBER_OF_STAGESの数を加算する
@@ -315,7 +315,7 @@ public class Player : MonoBehaviour {
                 if (GameData.NUMBER_OF_STAGES > GameData.NUMBER_OF_LEVELS)
                 {
                     //スコア保存
-                    PlayerPrefs.SetFloat(GameData.SCORE_KEY, timer);
+                    PlayerPrefs.SetFloat(GameData.SCORE_KEY, GameData.TotalScoreTime);
                     PlayerPrefs.Save();
 
                     //クリアしたらステージを初期化
