@@ -27,6 +27,15 @@ public class GameClear : MonoBehaviour {
         //ScoreText獲得した点数を表示
         this.bestScoreText.GetComponent<Text>().text = "BestTimeは " + bestScore + " s。頑張って";
 
+        //GameClearクラスで初期化処理実行
+        GameData.NUMBER_OF_STAGES = 1;
+        GameData.IsLoading = false;
+
+        GameData.ILeft = 3;
+
+        GameData.TotalScoreTime = 0.0f;
+        GameData.TotalTime = 2 * 60;
+
     }
 	
 	// Update is called once per frame

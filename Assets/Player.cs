@@ -111,21 +111,25 @@ public class Player : MonoBehaviour {
         //ゲームオーバーなら
         if (this.isEnd)
         {
+            //GameOverクラスで初期化を実装するように変更
+
             //ゲーム時間を戻す
-            GameData.TotalTime = 2 * 60;
+            //  GameData.TotalTime = 2 * 60;
 
             //ステージを初期化
-            GameData.NUMBER_OF_STAGES = 1;
-            GameData.IsLoading = false;
+            //  GameData.NUMBER_OF_STAGES = 1;
+            // GameData.IsLoading = false;
 
-            GameData.ILeft = 3;
+            //  GameData.ILeft = 3;
 
             //時間の初期化（要確認）
-            GameData.TotalScoreTime = 0.0f;
+            // GameData.TotalScoreTime = 0.0f;
 
             //仮実装。ゲームオーバ画面へ遷移させる。
             //TODO ゲームオーバ時にfellow.conutをクリアしなくてよいか確認
-            
+
+            //GameOverクラスで初期化を実装するように変更
+
 
             SceneManager.LoadScene("GameOver");
         }
@@ -318,15 +322,17 @@ public class Player : MonoBehaviour {
                     PlayerPrefs.SetFloat(GameData.SCORE_KEY, GameData.TotalScoreTime);
                     PlayerPrefs.Save();
 
+                    //GameClearクラスで初期化処理実行
                     //クリアしたらステージを初期化
-                    GameData.NUMBER_OF_STAGES = 1;
-                    GameData.IsLoading = false;
+                //    GameData.NUMBER_OF_STAGES = 1;
+                //    GameData.IsLoading = false;
 
-                    GameData.ILeft = 3;
+                //    GameData.ILeft = 3;
 
                     //時間の初期化（要確認）
-                    GameData.TotalScoreTime = 0.0f;
-                    GameData.TotalTime = 2 * 60;
+                    //ここで初期化するとゲームクリア時に０になる。。
+                 //   GameData.TotalScoreTime = 0.0f;
+                //    GameData.TotalTime = 2 * 60;
 
 
                     Debug.Log(GameData.NUMBER_OF_STAGES);

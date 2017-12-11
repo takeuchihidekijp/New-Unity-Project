@@ -15,13 +15,22 @@ public class Fade : MonoBehaviour {
 
     Image fadeImage;                //透明度を変更するパネルのイメージ
 
+    //messageを表示するテキスト
+    private GameObject messageText;
+
     void Start()
     {
+
+        //シーン中のmessageTextオブジェクトを取得
+        this.messageText = GameObject.Find("message");
+
         fadeImage = GetComponent<Image>();
         red = fadeImage.color.r;
         green = fadeImage.color.g;
         blue = fadeImage.color.b;
         alfa = fadeImage.color.a;
+        //表示されるかテスト
+       // this.messageText.GetComponent<Text>().text = GameData.Message_Of_CarClash;
     }
 
     void Update()
