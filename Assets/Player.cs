@@ -251,6 +251,9 @@ public class Player : MonoBehaviour {
             //車に当たったら残機を減らす。
             GameData.ILeft -= 1;
 
+            //メッセージを設定
+            GameData.MessageText = "車にあたっちゃった！";
+
             //stateTextメッセージを表示
             this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
 
@@ -283,6 +286,9 @@ public class Player : MonoBehaviour {
                 //残機を減らす。
                 GameData.ILeft -= 1;
 
+                //メッセージを設定
+                GameData.MessageText = "全員捕まえてないよ！";
+
                 //stateTextメッセージを表示
                 this.stateText.GetComponent<Text>().text = "全員捕まえてないよ！";
 
@@ -299,7 +305,10 @@ public class Player : MonoBehaviour {
             }
             else
             {
-            //ゴールした時にすべての敵を捕まえている場合はクリア
+                //ゴールした時にすべての敵を捕まえている場合はクリア
+
+                //メッセージを設定
+                GameData.MessageText = "学校についた!!";
 
                 //stateTextにGAME CLEARを表示
                 this.stateText.GetComponent<Text>().text = "学校についた!!";

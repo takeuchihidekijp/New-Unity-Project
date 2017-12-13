@@ -30,7 +30,7 @@ public class Fade : MonoBehaviour {
         blue = fadeImage.color.b;
         alfa = fadeImage.color.a;
         //表示されるかテスト
-       // this.messageText.GetComponent<Text>().text = GameData.Message_Of_CarClash;
+        this.messageText.GetComponent<Text>().text = GameData.MessageText;
     }
 
     void Update()

@@ -52,14 +52,22 @@ public class Fellow : MonoBehaviour {
             //車に当たったら残機を減らす。
             GameData.ILeft -= 1;
 
+            //メッセージを設定
+            GameData.MessageText = "車にあたっちゃった！";
+
+            //stateTextメッセージを表示
+            this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
+
             if (GameData.ILeft == 0)
             {
                 //ゲームオーバなので初期値に戻す。
                 GameData.ILeft = 3;
 
                 this.isEnd = true;
+
                 //stateTextにGAME OVERを表示
-                this.stateText.GetComponent<Text>().text = "GAME OVER";
+                this.stateText.GetComponent<Text>().text = "車にあたっちゃって残念！GameOver！";
+
 
                 //仮実装。車と衝突したときにゲームオーバ画面へ遷移させる。
                 SceneManager.LoadScene("GameOver");

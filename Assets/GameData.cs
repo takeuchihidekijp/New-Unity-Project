@@ -34,6 +34,9 @@ public class GameData {
     //ベストスコア保存用
     public static string HIGH_SCORE_KEY_BEST = "highScore";
 
+    //
+    public static string MessageText;
+
     //車に当たった際のメッセージ
     public static string Message_Of_CarClash = "車にあたっちゃった！";
 
