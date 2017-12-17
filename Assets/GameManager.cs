@@ -129,7 +129,8 @@ public class GameManager : MonoBehaviour {
     void CreateEnemys()
     {
         //敵をループの数だけ出現させる。
-        for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
+        //for(int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
+        for (int i = 0; i < GameData.NUMBER_OF_ENEMYS; i++)
         {
             Vector3 pos = GetSpawnPos();
 

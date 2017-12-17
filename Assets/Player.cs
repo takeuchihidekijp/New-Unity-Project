@@ -229,7 +229,7 @@ public class Player : MonoBehaviour {
         //ScoreText獲得した点数を表示
         //捕まえた人がわかるような表示とする。
         //this.scoreText.GetComponent<Text>().text = "Score " + this.score + "pt";
-        this.scoreText.GetComponent<Text>().text = "あと " + this.score + "/ 16 人";
+        this.scoreText.GetComponent<Text>().text = "あと " + this.score + "/ 15 人";
     }
 
     //Playerが死んだときの位置を定める
