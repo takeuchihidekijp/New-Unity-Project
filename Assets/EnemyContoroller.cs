@@ -101,6 +101,20 @@ public class EnemyContoroller : MonoBehaviour {
         }
     }
 
+    public void OnEnterShadow()
+    {
+
+        Debug.Log("OnEnterShadow");
+
+        Player player = this.Player.GetComponent<Player>();
+        player.AddFellow();
+
+        Destroy(this.gameObject);
+        //ここでフラグをオンにすることで条件分岐が正しく動くようにする。
+        this.isDead = true;
+
+    }
+
     private void EnemyMoveMent()
     {
 

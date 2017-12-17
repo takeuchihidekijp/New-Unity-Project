@@ -39,6 +39,7 @@ public class Fellow : MonoBehaviour {
 		
 	}
 
+
     // Playerが他のオブジェクトと接触した場合の処理
     private void OnCollisionEnter(Collision collision)
     {
