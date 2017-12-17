@@ -91,12 +91,12 @@ public class EnemyContoroller : MonoBehaviour {
             //Player player = this.Player.gameObject.GetComponent<Player>(); がステージ切り替え後に不具合があり、一時的に変更
             //Player player = collision.gameObject.GetComponent<Player>(); これだと捕まえた敵が敵を捕まえられないので再度変更
 
-            Player player = this.Player.GetComponent<Player>();
-            player.AddFellow();
+            //      Player player = this.Player.GetComponent<Player>();
+            //      player.AddFellow();
 
-            Destroy(this.gameObject);
+            //  Destroy(this.gameObject);
             //ここでフラグをオンにすることで条件分岐が正しく動くようにする。
-            this.isDead = true;
+            //  this.isDead = true;
 
         }
     }

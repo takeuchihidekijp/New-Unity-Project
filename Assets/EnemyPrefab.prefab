@@ -3184,7 +3184,7 @@ MonoBehaviour:
   _transform: {fileID: 4768453057702684}
   _layers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967039
   _onChangeState:
     m_PersistentCalls:
       m_Calls: []
@@ -3193,8 +3193,8 @@ MonoBehaviour:
   _onEnterShadow:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 607b2286548b0fa4087ef69d40d100a3, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 114663046487653684}
+        m_MethodName: OnEnterShadow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
