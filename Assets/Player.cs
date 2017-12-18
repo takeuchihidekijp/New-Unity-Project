@@ -151,8 +151,8 @@ public class Player : MonoBehaviour {
         for (int i = 0; i < fellows.Count; ++i)
         {
             var fellow = fellows[i]; // 配列をインデックスでアクセス
-            //100は、仮。過去の履歴の１００番目ということになる。なので10にしておく。10にするとスネークゲームっぽくなる。
-            int index = lastIndex - (i + 1) * 5;
+            //数値は、仮。過去の履歴の何番目ということになる。なので数を減らすほどキャラの感覚が小さくなる。2にするとスネークゲームっぽくなる。
+            int index = lastIndex - (i + 1) * 2;
 
             // インデックスが０未満の場合は捕まえた敵の位置をPlayerと合わせることはしない
             if (index >= 0)
