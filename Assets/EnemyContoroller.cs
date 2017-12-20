@@ -103,11 +103,11 @@ public class EnemyContoroller : MonoBehaviour {
 
     public void OnEnterShadow()
     {
-        Debug.Log("IF文前OnEnterShadow");
+      //  Debug.Log("IF文前OnEnterShadow");
 
         if (this.Player != null && this.isDead == false)
         {
-        Debug.Log("IF文後OnEnterShadow");
+      //  Debug.Log("IF文後OnEnterShadow");
 
         Player player = this.Player.GetComponent<Player>();
         player.AddFellow();
