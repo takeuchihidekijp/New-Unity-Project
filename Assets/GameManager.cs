@@ -20,14 +20,24 @@ public class GameManager : MonoBehaviour {
     public GameObject Cake;
 
     //アイテムを出すスタート地点(Z)
-    private int startPosZ = -120;
+    //private int startPosZ = -120;
+    //アイテムを出すスタート地点(Z) 201712仮に検証するため増やす
+    private int startPosZ = -300;
+
     //アイテムを出すゴール地点(Z)
-    private int goalPosZ = 80;
+    //private int goalPosZ = 80;
+    //アイテムを出すゴール地点(Z)  201712仮に検証するため増やす
+    private int goalPosZ = 200;
 
     //アイテムを出すスタート地点(X)
-    private int startPosX = -50;
+    //private int startPosX = -50;
+    //アイテムを出すスタート地点(X) 201712仮に検証するため増やす
+    private int startPosX = -200;
+
     //アイテムを出すゴール地点(X)
-    private int goalPosX = 80;
+    //private int goalPosX = 80;
+    //アイテムを出すゴール地点(X) 201712仮に検証するため増やす
+    private int goalPosX = 200;
 
     //アイテムを出すx方向の幅
     private float posRange = 10;
