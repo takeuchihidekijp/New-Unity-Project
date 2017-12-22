@@ -8,6 +8,12 @@ public class Title : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        //アンドロイドの場合は解像度を変更する
+#if UNITY_ANDROID
+        //解像度をスクリプトから変更
+        Screen.SetResolution(1280, 720, true);
+#endif
+
         //Titleクラスで初期化処理実行
         GameData.NUMBER_OF_STAGES = 1;
         GameData.IsLoading = false;

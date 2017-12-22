@@ -61,6 +61,10 @@ public class Fellow : MonoBehaviour {
 
             if (GameData.ILeft == 0)
             {
+
+                //ロジック上、ローディングされないのでここに来ることはないはずだが、タイミングによって呼ばれる可能性があるのでここで設定
+                GameData.MessageText = "車にあたっちゃって残念！GameOver！";
+
                 //ゲームオーバなので初期値に戻す。
                 GameData.ILeft = 3;
 
