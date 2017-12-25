@@ -19,14 +19,15 @@ public class GameClear : MonoBehaviour {
         this.bestScoreText = GameObject.Find("BestScore");
 
         //Debug 
-        Debug.Log("GameClear" + GameData.TotalScoreTime);
+       // Debug.Log("GameClear" + GameData.TotalScoreTime);
 
         //ScoreText獲得した点数を表示
         this.scoreText.GetComponent<Text>().text = "Timeは " + GameData.TotalScoreTime + " s。";
 
         float bestScore = PlayerPrefs.GetFloat(GameData.SCORE_KEY, GameData.TotalScoreTime);
 
-        if (bestScore > GameData.TotalScoreTime)
+        //Scoreは小さいほど良い
+        if (bestScore < GameData.TotalScoreTime)
         {
             //スコア保存
             PlayerPrefs.SetFloat(GameData.SCORE_KEY, GameData.TotalScoreTime);

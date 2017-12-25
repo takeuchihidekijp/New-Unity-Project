@@ -316,13 +316,13 @@ public class Player : MonoBehaviour {
                 this.stateText.GetComponent<Text>().text = "学校についた!!";
 
                 //Debug 
-                Debug.Log("クリア時間加える前" + GameData.TotalScoreTime);
+              //  Debug.Log("クリア時間加える前" + GameData.TotalScoreTime);
 
                 //総合時間にクリア時間を加える
                 GameData.TotalScoreTime += GameData.TotalTime;
 
                 //Debug 
-                Debug.Log("クリア時間加えた後" + GameData.TotalScoreTime);
+             //   Debug.Log("クリア時間加えた後" + GameData.TotalScoreTime);
 
                 //GameData.NUMBER_OF_STAGESの数を加算する
                 GameData.NUMBER_OF_STAGES += 1;
@@ -330,13 +330,13 @@ public class Player : MonoBehaviour {
                 // ローディング中のフラグを立てる
                 GameData.IsLoading = true;
 
-                Debug.Log(GameData.NUMBER_OF_STAGES);
+             //   Debug.Log(GameData.NUMBER_OF_STAGES);
 
                 if (GameData.NUMBER_OF_STAGES > GameData.NUMBER_OF_LEVELS)
                 {
 
                     //Debug 
-                    Debug.Log("PlayerClass Clear" + GameData.TotalScoreTime);
+               //     Debug.Log("PlayerClass Clear" + GameData.TotalScoreTime);
 
                     //スコア保存 GameClearクラスでセーブするように実装
                    // PlayerPrefs.SetFloat(GameData.SCORE_KEY, GameData.TotalScoreTime);
@@ -355,7 +355,7 @@ public class Player : MonoBehaviour {
                 //    GameData.TotalTime = 2 * 60;
 
 
-                    Debug.Log(GameData.NUMBER_OF_STAGES);
+                 //   Debug.Log(GameData.NUMBER_OF_STAGES);
 
 
                     SceneManager.LoadScene("GameClear");
