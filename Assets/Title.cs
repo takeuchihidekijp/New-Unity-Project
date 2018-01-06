@@ -11,9 +11,10 @@ public class Title : MonoBehaviour {
         //アンドロイドの場合は解像度を変更する
 #if UNITY_ANDROID
         //解像度をスクリプトから変更
-     //   Screen.SetResolution(1280, 720, true);
+        //   Screen.SetResolution(1280, 720, true);
 
-        Screen.SetResolution(800, 600, true);
+        //   Screen.SetResolution(800, 600, true);
+        Screen.SetResolution(854, 480, true);
 #endif
 
         //Titleクラスで初期化処理実行

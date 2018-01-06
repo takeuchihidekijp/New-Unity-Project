@@ -52,7 +52,9 @@ public class Player : MonoBehaviour {
     void Start () {
         //FrameRateがandroidとiPhoneで異なることがあるのでここで合わせておく
         //FrameRateがandroid 60のことが多い。端末の問題。iPhoneは３０のことが多い。60 はオーバースペック
-        Application.targetFrameRate = 30;
+     //   Application.targetFrameRate = 30;
+     //最初は30だったが、androidの性能が出ないため60に変更
+        Application.targetFrameRate = 60;
 
         //最初に死んだ際の位置を取得しておく。
         startPosition = this.transform.position;
@@ -151,7 +153,9 @@ public class Player : MonoBehaviour {
         for (int i = 0; i < fellows.Count; ++i)
         {
             var fellow = fellows[i]; // 配列をインデックスでアクセス
-            //数値は、仮。過去の履歴の何番目ということになる。なので数を減らすほどキャラの感覚が小さくなる。2にするとスネークゲームっぽくなる。
+            //*を実施する数値は、仮。過去の履歴の何番目ということになる。なので数を減らすほどキャラの感覚が小さくなる。以下の例のように2にするとスネークゲームっぽくなる。
+            //設定を変更
+        //    int index = lastIndex - (i + 1) * 2;
             int index = lastIndex - (i + 1) * 2;
 
             // インデックスが０未満の場合は捕まえた敵の位置をPlayerと合わせることはしない
