@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameData {
 
     //ステージ数。いったん5
-    public static int NUMBER_OF_LEVELS = 5;
+    public static int NUMBER_OF_LEVELS = 10;
 
     //現在のステージ。クリアしたら＋１
     public static int NUMBER_OF_STAGES = 1;

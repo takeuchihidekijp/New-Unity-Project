@@ -48,7 +48,7 @@ public class Fellow : MonoBehaviour {
         if (collision.gameObject.tag == "Car")
         {
 
-            Debug.Log(this.Player);
+        //    Debug.Log(this.Player);
 
             //車に当たったら残機を減らす。
             GameData.ILeft -= 1;

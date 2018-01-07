@@ -284,7 +284,7 @@ public class Player : MonoBehaviour {
         //ゴール地点に到達した場合
         if (collision.gameObject.tag == "Goal" && GameData.IsLoading == false)
         {
-            Debug.Log(fellows.Count);
+         //   Debug.Log(fellows.Count);
 
             //ゴールした時にすべての敵を捕まえてない、かつ、残機ゼロだとゲームオーバ
             if (GameData.NUMBER_OF_ENEMYS > fellows.Count)

@@ -14,6 +14,11 @@ public class Car : MonoBehaviour {
 
     float carCreateTime = 0.0f;
 
+    //20180107 車の速度の調査対応
+   // float m_elapsedTime;
+   // bool m_logged = false;
+    //20180107 車の速度の調査対応
+
 
     // Use this for initialization
     void Start () {
@@ -26,13 +31,27 @@ public class Car : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //20180107 車の速度の調査対応
+       // if (!m_logged) m_elapsedTime += Time.deltaTime;
+        //20180107 車の速度の調査対応
+
         //carに前方向の力を加える（追加）
         this.myRigidbody.AddForce(this.transform.forward * this.forwardForce);
+
+        //20180107 車の速度の調査対応
+        // if (myRigidbody.velocity.magnitude > 100f && !m_logged)
+        //  {
+        // Debug.Log("It takes " + m_elapsedTime + " for Velocity: " + myRigidbody.velocity);
+        //  m_logged = true;
+        // }
+        //20180107 車の速度の調査対応
+
 
         //障害物を検知したら止まる
         RaycastHit hit;
 
-        Debug.DrawLine(this.transform.position, this.transform.position + this.transform.forward * 50, Color.red);
+        //車のRaycasの値を出しているのを見せるデバック用
+      //  Debug.DrawLine(this.transform.position, this.transform.position + this.transform.forward * 50, Color.red);
 
         if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, 50f) == true)
         {
