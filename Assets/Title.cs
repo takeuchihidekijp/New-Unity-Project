@@ -16,6 +16,8 @@ public class Title : MonoBehaviour {
         //   Screen.SetResolution(800, 600, true);
         Screen.SetResolution(854, 480, true);
 #endif
+        //backbuttonを押下時にアプリケーションを終了させる。
+        Input.backButtonLeavesApp = true;
 
         //Titleクラスで初期化処理実行
         GameData.NUMBER_OF_STAGES = 1;
