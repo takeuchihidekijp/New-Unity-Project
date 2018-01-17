@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 432646}
-  - component: {fileID: 65708862000036760}
+  - component: {fileID: 65008562770239898}
   m_Layer: 0
   m_Name: house_4
   m_TagString: Untagged
@@ -933,7 +933,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146412}
   m_IsPrefabParent: 1
---- !u!65 &65708862000036760
+--- !u!65 &65008562770239898
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
