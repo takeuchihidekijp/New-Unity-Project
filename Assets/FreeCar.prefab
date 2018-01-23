@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4253070361415940}
   - component: {fileID: 33118718148686814}
   - component: {fileID: 23198116949937622}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: free_car_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4960088556161204}
   - component: {fileID: 33525161086570532}
   - component: {fileID: 23916936616034428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: free_car_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4566375189435512}
   - component: {fileID: 33198620170491328}
   - component: {fileID: 23212672484233280}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: free_car_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 65786678493717774}
   - component: {fileID: 114206177704977264}
   - component: {fileID: 54067150017500396}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FreeCar
   m_TagString: Car
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4138808569916822}
   - component: {fileID: 33607173752281062}
   - component: {fileID: 23583847931224526}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: free_car_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

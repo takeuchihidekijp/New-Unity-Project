@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 4982986108092784}
   - component: {fileID: 95723157926297606}
   m_Layer: 0
-  m_Name: Player_run
+  m_Name: Player_run_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2082,7 +2082,7 @@ Animator:
   m_GameObject: {fileID: 1723049719369564}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 37ffa6c26217e1b418558d0666ef1b4a, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a355280896fcc4b6092848683046e366, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

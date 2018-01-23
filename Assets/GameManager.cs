@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour {
     //お菓子を入れる
     public GameObject Cake;
 
+    //lecture1のプレハブ
+    public GameObject lecture1Prefab;
+
     //アイテムを出すスタート地点(Z)
     //private int startPosZ = -120;
     //アイテムを出すスタート地点(Z) 201712仮に検証するため増やす
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour {
         CreateEnemys();
 
         CreateItems();
+
 
     }
 
