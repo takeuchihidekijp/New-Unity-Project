@@ -25,10 +25,9 @@ public class BackToTitle : MonoBehaviour {
             SceneManager.LoadScene("title");
             break;
 
-            case "Retry":
+            case "Continue":
 
-            //Retryは仮実装
-            SceneManager.LoadScene("title");
+            SceneManager.LoadScene(GameData.NUMBER_OF_STAGES); ;
             break;
 
         }

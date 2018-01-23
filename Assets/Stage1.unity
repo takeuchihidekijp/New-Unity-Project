@@ -2363,6 +2363,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224057132760194116, guid: 44f7f6c9e8ed3e142a9bb452cbb23a5e,
     type: 2}
   m_PrefabInternal: {fileID: 1802551163}
+--- !u!114 &589319191 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114950652300204078, guid: 44f7f6c9e8ed3e142a9bb452cbb23a5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1802551163}
+  m_Script: {fileID: 11500000, guid: 3a32062628dff464c8966c12b2319fa6, type: 3}
 --- !u!1 &609933893
 GameObject:
   m_ObjectHideFlags: 0
@@ -6759,8 +6765,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 114950652300204078, guid: 44f7f6c9e8ed3e142a9bb452cbb23a5e,
-        type: 2}
+      objectReference: {fileID: 589319191}
     - target: {fileID: 114038384647595138, guid: 44f7f6c9e8ed3e142a9bb452cbb23a5e,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
