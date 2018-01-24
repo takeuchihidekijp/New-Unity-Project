@@ -48,16 +48,24 @@ public class Fellow : MonoBehaviour {
         if (collision.gameObject.tag == "Car")
         {
 
-        //    Debug.Log(this.Player);
+            Car car = collision.gameObject.GetComponent<Car>();
 
-            //車に当たったら残機を減らす。
-            GameData.ILeft -= 1;
+            //    Debug.Log(this.Player);
 
-            //メッセージを設定
-            GameData.MessageText = "車にあたっちゃった！";
+            if (car != null && car.carDestoryFLG == false)
+            {
 
-            //stateTextメッセージを表示
-            this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
+                car.carDestoryFLG = true;
+
+                //車に当たったら残機を減らす。
+                GameData.ILeft -= 1;
+
+                //メッセージを設定
+                GameData.MessageText = "車にあたっちゃった！";
+
+                //stateTextメッセージを表示
+                this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
+            }
 
             if (GameData.ILeft == 0)
             {

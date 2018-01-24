@@ -252,14 +252,22 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.tag == "Car")
         {
 
-            //車に当たったら残機を減らす。
-            GameData.ILeft -= 1;
+            Car car = collision.gameObject.GetComponent<Car>();
 
-            //メッセージを設定
-            GameData.MessageText = "車にあたっちゃった！";
+            if (car != null && car.carDestoryFLG == false)
+            {
 
-            //stateTextメッセージを表示
-            this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
+                car.carDestoryFLG = true;
+
+                //車に当たったら残機を減らす。
+                GameData.ILeft -= 1;
+
+                //メッセージを設定
+                GameData.MessageText = "車にあたっちゃった！";
+
+                //stateTextメッセージを表示
+                this.stateText.GetComponent<Text>().text = "車にあたっちゃった！";
+            }
 
             if (GameData.ILeft == 0)
             {

@@ -15,9 +15,11 @@ public class Car : MonoBehaviour {
     float carCreateTime = 0.0f;
 
     //20180107 車の速度の調査対応
-   // float m_elapsedTime;
-   // bool m_logged = false;
+    // float m_elapsedTime;
+    // bool m_logged = false;
     //20180107 車の速度の調査対応
+
+    public bool carDestoryFLG = false;
 
 
     // Use this for initialization
