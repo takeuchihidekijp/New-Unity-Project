@@ -34,6 +34,14 @@ public class Lecture : MonoBehaviour {
 
     void OnEnable()
     {
+        GameObject fadeImage = GameObject.Find("FadeImage");
+
+        if (fadeImage != null)
+        {
+            fadeImage.SetActive(false);
+        }
+        
+
         Debug.Log("OnEnableだよ");
     }
 }

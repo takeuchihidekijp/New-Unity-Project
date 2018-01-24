@@ -27,7 +27,7 @@ public class BackToTitle : MonoBehaviour {
 
             case "Continue":
 
-            SceneManager.LoadScene(GameData.NUMBER_OF_STAGES); ;
+            SceneManager.LoadScene(GameData.NUMBER_OF_STAGES); 
             break;
 
         }
